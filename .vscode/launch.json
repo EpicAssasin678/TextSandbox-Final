@@ -1,0 +1,82 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Item",
+            "request": "launch",
+            "mainClass": "Mechanics.Items.Item",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Weapon",
+            "request": "launch",
+            "mainClass": "Mechanics.Items.Weapon",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Inventory",
+            "request": "launch",
+            "mainClass": "Mechanics.Items.Inventory",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Enemy",
+            "request": "launch",
+            "mainClass": "Enemy",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Adventure<TextSandbox_c4aab7d0>",
+            "request": "launch",
+            "mainClass": "Adventure",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<TextSandbox_c4aab7d0>",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Dialogue<TextSandbox_c4aab7d0>",
+            "request": "launch",
+            "mainClass": "Bin.Dialogue",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-NewUI<TextSandbox_c4aab7d0>",
+            "request": "launch",
+            "mainClass": "Experimental.NewUI",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App",
+            "request": "launch",
+            "mainClass": "App"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-JAdventure",
+            "request": "launch",
+            "mainClass": "com.jadventure.game.JAdventure"
+        }
+    ]
+}

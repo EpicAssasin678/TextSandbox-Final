@@ -1,0 +1,32 @@
+
+{
+    "Dialogue" : "Dialogue",
+        "dialogueEvent01" : "Would you like to buy something from my shop?",
+            "dialogueEvent01Options" : [
+                {"LAYER0" : [
+                    {"option1" : "Yes"},
+                    {"option2" : "No"},
+                    {"breakpoint": "option2"}
+                ]},
+                {"LAYER1" : [
+                    {"option1" : "Beets"},
+                    {"option2" : "Carrots"},
+                    {"option3" : "I will take nothing."},
+                    {"breakpoint" : "option3"}
+                ]}
+            ],
+            "dialogueEvent01Feedback" : [
+                {"LAYER0" : [
+                    {"feedback1" : "Good, what would you like to buy?\nBeets, Carrots, Nothing"}, 
+                    {"feedback2" : "Goodbye."}
+                ]},
+                {"LAYER1" : [
+                    {"feedback1" :  "That will be 14.99 please!"},
+                    {"feedback2" : "That will be 12.00 please!"}
+                ]}
+            ],
+            "dialogueEvent01Breakpoint" : "Alright, come again if you will!"
+
+}
+
+                                                     

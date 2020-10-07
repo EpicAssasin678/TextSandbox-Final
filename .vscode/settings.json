@@ -1,0 +1,12 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "java-json.jar",
+        "c:\\Users\\epicd\\OneDrive\\Documents\\Java Projects\\java-json.jar",
+        "c:\\Users\\epicd\\OneDrive\\Documents\\Java Projects\\json-simple-1.1.jar",
+        "c:\\Users\\epicd\\OneDrive\\Documents\\Java Libraries\\json-simple-1.1.jar"
+    ],
+    "maven.view": "hierarchical",
+    "java.dependency.packagePresentation": "hierarchical",
+    "git.decorations.enabled": false
+}

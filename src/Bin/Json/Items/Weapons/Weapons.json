@@ -1,0 +1,16 @@
+{
+    "Broadsword" : {
+        "Attacks" : [
+            {
+                "name" : "Stab",
+                "damage" : 10
+            },
+            {
+                "name" : "Heavy Swing",
+                "damage" : 20
+            }
+           
+        ]
+
+    }
+}
