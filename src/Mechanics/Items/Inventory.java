@@ -100,6 +100,8 @@ public class Inventory {
         System.out.println(test.name);
         test.initItem(test.toWeapon(test));
 
+        System.out.println(inv);
+
         
         
         

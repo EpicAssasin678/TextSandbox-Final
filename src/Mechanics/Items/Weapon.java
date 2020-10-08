@@ -45,7 +45,7 @@ public class Weapon extends Item {
     }
 
     /**
-     * Class specific constructor no supe rimplementation
+     * Class specific constructor no super\implementation
      * @param name
      * @param attackNames
      * @param attackValues
@@ -176,7 +176,11 @@ public class Weapon extends Item {
     public static void main(String[] args) {
 
         Weapon broadsword = new Weapon("Broadsword");
+        System.out.println(broadsword.checkClass());
+        System.out.println(broadsword.itemType(broadsword));
+    
         broadsword.initWeapon("Broadsword");
+
         System.out.println(broadsword.printAttackMap());
         System.out.println(broadsword);
 
@@ -184,8 +188,6 @@ public class Weapon extends Item {
         System.out.println(broadsword.itemType(broadsword));
     
 
-
-        
         Item test = new Weapon();
         System.out.println(test.getName());
         //broadsword.attacks.add( (Array broadsword.attackNames.get(0), broadsword.attackValues.get(0) );
