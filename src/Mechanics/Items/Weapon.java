@@ -10,6 +10,13 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * Weapon class:
+ *  Represents a weapon object with fields for name, description, identifier, etc.
+ *  Has implementation for the Item superclass. 
+ * @author Zachery Uporsky aka darkf0x
+ * @version 0.2
+ */
 public class Weapon extends Item {
 
     //obj instance variables
@@ -188,7 +195,7 @@ public class Weapon extends Item {
         System.out.println(broadsword.itemType(broadsword));
     
 
-        Item test = new Weapon();
+        Item test = new Weapon("Bruh");
         System.out.println(test.getName());
         //broadsword.attacks.add( (Array broadsword.attackNames.get(0), broadsword.attackValues.get(0) );
 

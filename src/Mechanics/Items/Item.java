@@ -52,7 +52,7 @@ public class Item {
         this.identifier = identifier;
         this.name = name;
         this.type = type;
-
+        
     }
 
     public Item (String name, boolean isWeapon) {
