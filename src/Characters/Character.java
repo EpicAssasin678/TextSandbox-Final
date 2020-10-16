@@ -31,6 +31,14 @@ public class Character {
     public String expBar = "[";
     public double levelCompletion;
 
+    /**
+     * 
+     * @param name
+     * @param level
+     * @param exp
+     * @param health
+     * @param inventory
+     */
     public Character(String name, int level, double exp, int health, Inventory inventory) {
         characterName = name;
         this.level = level;
@@ -55,11 +63,17 @@ public class Character {
         this.level = level;
         this.exp = exp;
 
+        //setting defaults if not specified 
+        this.health = CHARACTER_DEFAULT_HEALTH;
     }
 
     public Character(String name, int level) {
         characterName = name;
         this.level = level;
+
+        //setting defaults if not specified
+        this.exp = CHARACTER_DEFAULT_EXP;
+        this.health = CHARACTER_DEFAULT_HEALTH;
     }
 
     //overloading Charcter object so that it has multiple forms 
@@ -212,9 +226,10 @@ public class Character {
     
     public void attack(Character Target, int damage) {
         Target.setHealth(Target.getHealth() - damage);
-
+        
         //Debug options:
-        System.out.println("\nDamage was: " + damage);
+        System.out.println("\n" + this.getName() + " attacked " + Target.getName());
+        System.out.println("Damage was: " + damage);
         System.out.println(Target.getName() + "'s health is now " + Target.getHealth());
     }
 

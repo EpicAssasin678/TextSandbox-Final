@@ -36,7 +36,7 @@ public class Weapon extends Item {
 
     //TODO implement methods to parent class, so that other items can use the functionality
     //TODO check the type of object via the checkClass() method
-
+    
     /**
      * super descriptor contructor
      * @param identifier

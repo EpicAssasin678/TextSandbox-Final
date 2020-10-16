@@ -22,6 +22,7 @@ public class Inventory {
     int itemIndex = 0;
 
     //? inventory is just an instance variable of the class instead of any object 
+    //? do we even need an object form of the class and if so what can we make static????(ie)
     //? if this was so, Item would need an implicit superconstructor
     HashMap <Integer, Item> inv = new HashMap<Integer, Item>();
     

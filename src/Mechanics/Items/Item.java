@@ -7,13 +7,11 @@ import java.util.Scanner;
 import org.json.simple.parser.*;
 
 /**
- * Class will be the superclass for other items. Most importantly, weapons for now.
+ * Item Class
  * 
- * make items an abstract class, make methods for getters and setters, initItem, etc
- * 
- * Item will be specified by type, and then the name of an item within that type
- * Then the name of the item will be correlated to the WeaponStats which will display attacks
- * 
+ * @author Zachery Uporsky aka darkf0x
+ * @version 0.2 
+ * @see
  * TODO fix the implementation of the class, make the functions of each to descend from it's child classes
  * 
  */
@@ -126,7 +124,7 @@ public class Item {
         try {
             System.out.println((Object) i.getClass());
             i.setName("Broadsword");
-            
+
             
 
 
