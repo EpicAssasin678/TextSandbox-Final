@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.swing.border.Border;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -17,7 +18,7 @@ import org.json.simple.parser.JSONParser;
  * @author Zachery Uporsky aka darkf0x
  * @version 0.2
  */
-public class Weapon extends Item {
+public class Weapon extends Item implements ItemInterface {
 
     //obj instance variables
     String identifier;
@@ -37,50 +38,28 @@ public class Weapon extends Item {
     //TODO implement methods to parent class, so that other items can use the functionality
     //TODO check the type of object via the checkClass() method
     
-    /**
-     * super descriptor contructor
-     * @param identifier
-     * @param name
-     * @param description
-     * @param invAssigned
-     * @param isHoldable
-     */
-    public Weapon (String identifier, String name, String description, int invAssigned, boolean isHoldable) {
-        super(identifier, name);
-        this.description = description;
-    
-    }
 
-    /**
-     * Class specific constructor no super\implementation
-     * @param name
-     * @param attackNames
-     * @param attackValues
-     */
-    public Weapon (String name, ArrayList <String> attackNames, ArrayList <Long> attackValues) {
-        super(name);
-        this.name = name;
-        this.attackNames = attackNames;
-        this.attackValues = attackValues;
-
-    }
-
-    public Weapon (String identifier, String name) {
-        super(identifier, name);
-        
+    public Weapon (String name, String identifier) {
+        super(name, identifier);
+        initWeapon(name);
     }
 
     public Weapon (String name) {
         super(name);
         this.name = name;
-        
+        initWeapon(name);
     }
-
+    
     /**
      * Default blank weapon constructor
      */
     public Weapon () {
         
+    }
+
+    //because of the extension of itemInterface
+    public ItemType specifyItemTypeOfClass() {
+        return ItemType.WEAPON;
     }
 
     public void generateAttacks(JSONArray arr) {
@@ -105,6 +84,7 @@ public class Weapon extends Item {
      */
     public HashMap generateAttackMap () {
 
+        System.out.println("generateAttackMap() called");
         try {
             for (int i = 0; i < attackNames.size(); i++) {
                 attackMap.put(attackNames.get(i), attackValues.get(i));
@@ -145,13 +125,14 @@ public class Weapon extends Item {
     JSONObject jWeapon;
     public void initWeapon(String weaponName) {
 
+        System.out.println("\ninitWeapon() called\nWeapon: " + (Object) this.getClass().toString() + "Has been initialised.\n");
         try {
 
             Object weaponFile = parser.parse(new FileReader("src\\Bin\\Json\\Items\\Weapons\\Weapons.json"));
             jWeapon = (JSONObject) weaponFile;
             JSONObject pointedWeapon = (JSONObject) jWeapon.get(weaponName);
             JSONArray weaponAttacks = (JSONArray) pointedWeapon.get("Attacks");
-
+            
             //DEBUG
             System.out.println(weaponFile);
             System.out.println(jWeapon);
@@ -163,42 +144,42 @@ public class Weapon extends Item {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+        //for debug screen format purposes
+        System.out.println("\n");
     }
 
-    public String itemType(Item item) {
-        return item.type;
+    /**
+     * Prints a form view of the Item, useful for looking at changes or all values of the class.
+     * @return String formStr
+     */
+    public String printForm() {
+        String formStr = "\nWEAPON DETAILS:" + "\nCLASS: " + this.getClass().getName() + "\nHASHCODE(HEXSTRING): " + "@" + Integer.toHexString(this.hashCode())  
+         + "\nNAME: " + this.name + "\nIDENTIFIER: " + this.identifier + "\n";
+        return formStr;
     }
-
-    public String checkClass() {
-        if (this.getClass().toString() == "Item") {
-            return "Item";
-        } else {
-            return "Weapon";
-        }
-    }
-
-
 
     public static void main(String[] args) {
 
         Weapon broadsword = new Weapon("Broadsword");
         System.out.println(broadsword.checkClass());
-        System.out.println(broadsword.itemType(broadsword));
-    
         broadsword.initWeapon("Broadsword");
 
-        System.out.println(broadsword.printAttackMap());
-        System.out.println(broadsword);
+        //System.out.println(broadsword.printAttackMap());
+        System.out.println("\n" + broadsword);
 
-        System.out.println(broadsword.checkClass());
-        System.out.println(broadsword.itemType(broadsword));
-    
-
-        Item test = new Weapon("Bruh");
-        System.out.println(test.getName());
+        
+        //System.out.println(test.getName());
+        System.out.println(broadsword.getName());
+        System.out.println(broadsword.name);
         //broadsword.attacks.add( (Array broadsword.attackNames.get(0), broadsword.attackValues.get(0) );
+        System.out.println(broadsword.printForm());
 
+        System.out.println(broadsword.getName());
+        //the super fields and the instance fields are completely seperate
+        broadsword.setName("WimpySword");
+        System.out.println(broadsword.getName());
+        System.out.println(broadsword.name);
+        
         
     }
     

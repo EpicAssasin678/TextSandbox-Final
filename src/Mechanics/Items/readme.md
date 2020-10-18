@@ -38,7 +38,9 @@ Option #2 would be more fond personally as items can be looked up accurately by 
 
 ### Item Class
 
+The item class will be instnatiated by item obj, item obj only needs 2 fields really which is the name and what it points to. All other variables can be instance variables.
 
+The same goes for it's children classes where all will be direct superconstructors.
 
 
 

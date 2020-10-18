@@ -17,37 +17,34 @@ public class Inventory {
     //instance variables
     String[] items;
     String[] itemStats;
-    JSONObject[] references;
-    JSONArray[] invarray;
     int itemIndex = 0;
 
     //? inventory is just an instance variable of the class instead of any object 
     //? do we even need an object form of the class and if so what can we make static????(ie)
     //? if this was so, Item would need an implicit superconstructor
-    HashMap <Integer, Item> inv = new HashMap<Integer, Item>();
+    HashMap <Integer, Item> inventory = new HashMap<Integer, Item>();
     
 
     public Inventory (HashMap <Integer, Item> inv) {
-        this.inv = inv;
+        
     }
 
     public Inventory () {
     }
 
-    public HashMap inventory () {
-        return inv;
-     }
 
-     public void addToInventory (Item item) {
+    public void addToInventory (Item item) {
         
             System.out.println(item);
             System.out.println(item.getName());
 
             item = new Item(item.getName());
-            inv.put(itemIndex, item);
+            inventory.put(itemIndex, item);
+            System.out.println("An item was added to the inventory: " + inventory.get(itemIndex).toString() + " at " + itemIndex);
+
             itemIndex++;
         
-            System.out.println("An item was added to the inventory: " + inv.get(itemIndex).toString() + "at " + itemIndex);
+            
      }
 
     public void addToInventory(Weapon weapon) {
@@ -56,36 +53,17 @@ public class Inventory {
         System.out.println(weapon.getName());
 
         weapon = new Weapon(weapon.getName());
-        inv.put(itemIndex, weapon);
+        inventory.put(itemIndex, weapon);
+        System.out.println("A weapon was added to the inventory: " + inventory.get(itemIndex).toString() + " at " + itemIndex);
+
         itemIndex++;
         
-        System.out.println("A weapon was added to the inventory: " + inv.get(itemIndex).toString() + "at " + itemIndex);
+        
     }
   
-    int writeCount;
-    public static void writeItem(String itemName, Integer damage) {
-
-        JSONObject createdObject = new JSONObject();
-        createdObject.put("Damage", Integer.toString(damage));
-        
-        JSONObject writtenList = new JSONObject();
-        writtenList.put(itemName, createdObject);
-
-        
-        //writes the file 
-        try (FileWriter file = new FileWriter("C:\\Users\\epicd\\OneDrive\\Documents\\Java Projects\\TextSandbox\\src\\Bin\\Json\\Items\\Items.JSON")){
-            
-            file.write(writtenList.toString());
-    
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        
-    }
 
     public String toString() {
-        return this.inv.toString();
+        return this.inventory.toString();
     }
 
 
@@ -93,18 +71,33 @@ public class Inventory {
         
         //instantiating INventory inv and Item test
         Inventory inv = new Inventory();
-        Item test = new Item("Broadsowrd");
+        Item test = new Item("Broadsword");
+        Weapon testWeapon = new Weapon("Broadsword");
 
         //printing both the test and the inv out
         System.out.println(test);
         System.out.println(inv);
         System.out.println(test.name);
-        test.initItem(test.toWeapon(test));
+        //inv.inventory.put(1, test);
+        inv.addToInventory(test);
+        System.out.println(inv.inventory);
 
-        System.out.println(inv);
 
+        inv.inventory.put(1, test);
+        System.out.println(inv.inventory);
+
+        System.out.println(inv.inventory.get(1));
+        inv.inventory.get(1).getName();
+
+        System.out.println("\nTEST WITH WEAPONS");
+        System.out.println(testWeapon);
         
-        
+        inv.inventory.put(2, testWeapon);
+        System.out.println(inv.inventory);
+        //tseting with a weapon
+        inv.addToInventory(testWeapon);
+
+        System.out.println(inv.inventory);
         
     }
 }
