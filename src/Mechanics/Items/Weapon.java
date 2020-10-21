@@ -30,8 +30,8 @@ public class Weapon extends Item implements ItemInterface {
     Weapon referenced;
 
     ArrayList <String> attackNames = new ArrayList<String>();
-    ArrayList <Long> attackValues = new ArrayList<Long>();
-    HashMap <String, Long> attackMap = new HashMap<String, Long>(); 
+    ArrayList <Integer> attackValues = new ArrayList<Integer>();
+    HashMap <String, Integer> attackMap = new HashMap<String, Integer>(); 
     
     boolean weaponHasGenerated = false;
 
@@ -72,7 +72,8 @@ public class Weapon extends Item implements ItemInterface {
             System.out.println(attackNames);
             
             long objInt = (Long) obj.get("damage");
-            attackValues.add(objInt);
+            
+            attackValues.add((int) objInt);
             System.out.println(attackValues);
         }
     }
@@ -125,7 +126,7 @@ public class Weapon extends Item implements ItemInterface {
     JSONObject jWeapon;
     public void initWeapon(String weaponName) {
 
-        System.out.println("\ninitWeapon() called\nWeapon: " + (Object) this.getClass().toString() + "Has been initialised.\n");
+        System.out.println("\ninitWeapon() called\nWeapon: " + (Object) this.getClass().toString() + "@" + Integer.toHexString(this.hashCode()) + " Has been initialised.\n");
         try {
 
             Object weaponFile = parser.parse(new FileReader("src\\Bin\\Json\\Items\\Weapons\\Weapons.json"));

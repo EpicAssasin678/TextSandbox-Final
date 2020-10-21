@@ -37,7 +37,6 @@ public class Item implements ItemInterface {
     }
 
     public Item (String name, String type) {
-        
         this.name = name;
         this.type = type;
 
@@ -56,15 +55,6 @@ public class Item implements ItemInterface {
     }
     
     public Item () {
-    }
-
-    //! getter and setters below
-    public String getIdentifier() {
-        return this.identifier;
-    }
-
-    public void setIdentifier(String set) {
-        this.identifier = set;
     }
 
     public String getName() {
@@ -98,8 +88,9 @@ public class Item implements ItemInterface {
 
     //sets the pointedWeapon or Item and holds it within the instance of this item
     //TODO make this work for every type of weapon
+    //!DELETE DEPRICATED RETARD 
     public ItemType compareType () {
-
+        
         if (this.type == "Weapon" || this.type == "weapon" || this.type == "WEAPON") {
             setType("Weapon");
             return ItemType.WEAPON;
@@ -111,6 +102,7 @@ public class Item implements ItemInterface {
         }
     }
 
+    //!DELETE
     public void createTypeObj () {
 
         ItemType comparedItem = compareType();
