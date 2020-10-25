@@ -1,4 +1,4 @@
-package Mechanics.Items;
+package Mechanics.items;
 
 import java.io.File;
 import java.io.FileReader;

@@ -1,4 +1,4 @@
-package Mechanics.Items;
+package Mechanics.items;
 
 import java.io.FileReader;
 import java.lang.reflect.Array;
@@ -18,7 +18,7 @@ import org.json.simple.parser.JSONParser;
  * @author Zachery Uporsky aka darkf0x
  * @version 0.2
  */
-public class Weapon extends Item implements ItemInterface {
+public class Weapon extends Item {
 
     //obj instance variables
     String identifier;
@@ -106,7 +106,7 @@ public class Weapon extends Item implements ItemInterface {
     public String printAttackMap () {
 
         String build = "";
-        build += "\n" + this.name + "'s Attacks:\n";
+        build += "\n" + super.name + "'s Attacks:\n";
         build += "-------------------------------------------------------------\n";
         //make a foreach loop to a String and concatenate it
         for (String i: this.attackMap.keySet()) {
@@ -114,7 +114,7 @@ public class Weapon extends Item implements ItemInterface {
         }
         build += "-------------------------------------------------------------\n";
         return build;
-    }
+}
 
 
     /**
@@ -154,8 +154,13 @@ public class Weapon extends Item implements ItemInterface {
      * @return String formStr
      */
     public String printForm() {
-        String formStr = "\nWEAPON DETAILS:" + "\nCLASS: " + this.getClass().getName() + "\nHASHCODE(HEXSTRING): " + "@" + Integer.toHexString(this.hashCode())  
-         + "\nNAME: " + this.name + "\nIDENTIFIER: " + this.identifier + "\n";
+        String formStr = 
+        "\n====================================" + 
+        "\n[WEAPON DETAILS]" + "\nCLASS: " + this.getClass().getName() + "\nHASHCODE(HEXSTRING): " + "@" + Integer.toHexString(this.hashCode())  
+         + "\nNAME: " + this.name + "\nIDENTIFIER: " + this.identifier + "\nATTACK NAMES TOSTRING: " +
+         this.attackNames.toString() + "\nATTACK VALUES TOSTRING: "  + this.attackValues.toString() + 
+         "\nATTACK MAP TOSTRING: " + this.attackMap.toString() + 
+         "\n=================================\n" ;
         return formStr;
     }
 
@@ -163,7 +168,6 @@ public class Weapon extends Item implements ItemInterface {
 
         Weapon broadsword = new Weapon("Broadsword");
         System.out.println(broadsword.checkClass());
-        broadsword.initWeapon("Broadsword");
 
         //System.out.println(broadsword.printAttackMap());
         System.out.println("\n" + broadsword);

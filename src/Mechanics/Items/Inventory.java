@@ -1,4 +1,4 @@
-package Mechanics.Items;
+package Mechanics.items;
 
 import java.io.FileWriter;
 
@@ -25,8 +25,9 @@ public class Inventory {
     //? do we even need an object form of the class and if so what can we make static????(ie)
     //? if this was so, Item would need an implicit superconstructor
     //TODO change HashMap to type <String, Item> instead
-    HashMap <Integer, Item> inventory = new HashMap<Integer, Item>();
+    HashMap <String, Item> inventory = new HashMap<String, Item>();
 
+    
     public Inventory (HashMap <Integer, Item> inv) {
         
     }
@@ -44,10 +45,9 @@ public class Inventory {
             //System.out.println(item);
             //System.out.println(item.getName());
             item = new Item(item.getName());
-            inventory.put(itemIndex, item);
-            System.out.println("An item was added to the inventory: " + inventory.get(itemIndex).toString() + " at " + itemIndex);
-
-            itemIndex++;  
+            inventory.put(item.getName(), item);
+            System.out.println("An item was added to the inventory: " + inventory.get(item.getName()) + " at " + itemIndex);
+ 
      }
 
      /**
@@ -59,11 +59,13 @@ public class Inventory {
         //System.out.println(weapon);
         //System.out.println(weapon.getName());
         weapon = new Weapon(weapon.getName());
-        inventory.put(itemIndex, weapon);
-        System.out.println("A weapon was added to the inventory: " + inventory.get(itemIndex).toString() + " at " + itemIndex);
+        inventory.put(weapon.getName(), weapon);
+        System.out.println("A weapon was added to the inventory: " + inventory.get(weapon.getName()) + " at " + itemIndex);
 
-        itemIndex++;
+
     }
+
+
   
 
     public String toString() {
@@ -81,7 +83,7 @@ public class Inventory {
         System.out.println(testWeapon);
 
         System.out.println("\nThen testing traditional put method of testWeapon");
-        inv.inventory.put(0, testWeapon);
+        inv.inventory.put(testWeapon.getName(), testWeapon);
         
         System.out.println("Inventory now is: " + inv + "\nNow time to do the add method:");
         inv.addToInventory(testWeapon);

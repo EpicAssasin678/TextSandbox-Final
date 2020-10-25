@@ -1,7 +1,7 @@
 
 package Characters;
 
-import Mechanics.Items.*;
+import Mechanics.items.*;
 
 /**
  * Character Class
@@ -258,11 +258,6 @@ public class Character {
 
     }
     */
-    
-
-    
-
-
     
     public static void main(String[] args) {
         

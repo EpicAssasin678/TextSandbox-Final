@@ -6,10 +6,11 @@ This is the readme for the item package
 
 ### Documentation on the item package
 
-Documentation of the item package
 
 Idea for how to implement the inventory HashMap:
 https://stackoverflow.com/questions/14599317/hashmap-holding-different-data-types-as-values-for-instance-integer-string-and/14599451
+
+____
 
 ## Problems
 
@@ -21,11 +22,12 @@ Right now their is a couple of problems:
 
 ### Item Package 
 
+___
 ## Abstract Functionality
 
 My idea for this package is to create a series of classes for the acess of items and storage in an inventory system.
 
--------------------------------------------------
+
 ### Inventory Class
 Inventory class can be an objedct class although may have no need to in all actuality because multiple instances of the inventory class should not be needed. The only concievable instance would be that of the player.
 

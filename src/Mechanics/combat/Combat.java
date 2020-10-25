@@ -1,6 +1,7 @@
 package Mechanics.combat;
 
 import Characters.Character;
+import Mechanics.items.*;
 
 public class Combat  {
     
@@ -12,7 +13,6 @@ public class Combat  {
      */
     
     public double ranDamage;
-
     
     public void attack(Character Target, int damage) {
         Target.setHealth(Target.getHealth() - damage);
@@ -40,5 +40,10 @@ public class Combat  {
 
     public void damageCalc() {
 
+    }
+
+
+    public static void main(String[] args) {
+        
     }
 }
