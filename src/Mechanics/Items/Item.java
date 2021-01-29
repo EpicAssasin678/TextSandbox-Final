@@ -74,7 +74,7 @@ public class Item implements ItemInterface {
     }
 
     //because of the extension of ItemInterface
-    public ItemType specifyItemTypeOfClass() {
+    public ItemType specifyItemType() {
         return ItemType.UNDEFINED;
     }
 

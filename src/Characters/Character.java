@@ -82,7 +82,7 @@ public class Character {
     }
 
     public Character() {
-
+        
     }
 
     public Integer getDefaultHealth() {

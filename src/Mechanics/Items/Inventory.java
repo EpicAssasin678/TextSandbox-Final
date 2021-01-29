@@ -17,8 +17,6 @@ import org.json.simple.*;
 public class Inventory {
     
     //instance variables
-    String[] items;
-    String[] itemStats;
     int itemIndex = 0;
 
     //? inventory is just an instance variable of the class instead of any object 
@@ -42,11 +40,11 @@ public class Inventory {
      */
     public void addToInventory (Item item) {
         
-            //System.out.println(item);
-            //System.out.println(item.getName());
-            item = new Item(item.getName());
-            inventory.put(item.getName(), item);
-            System.out.println("An item was added to the inventory: " + inventory.get(item.getName()) + " at " + itemIndex);
+        //System.out.println(item);
+        //System.out.println(item.getName());
+        item = new Item(item.getName());
+        inventory.put(item.getName(), item);
+        System.out.println("An item was added to the inventory: " + inventory.get(item.getName()) + " at " + itemIndex);
  
      }
 
@@ -62,10 +60,14 @@ public class Inventory {
         inventory.put(weapon.getName(), weapon);
         System.out.println("A weapon was added to the inventory: " + inventory.get(weapon.getName()) + " at " + itemIndex);
 
-
     }
 
+    public void addToInventory(Potion potion) {
 
+        //Implement the potion type 
+
+
+    }
   
 
     public String toString() {
@@ -90,11 +92,12 @@ public class Inventory {
         System.out.println("Test weapon now should be changed.\nInventory now" + inv);
         
         System.out.println("\nNow changing name of that inventory assignment");
-        System.out.println("BEFORE: " + inv.inventory.get(0).getName());
-        inv.inventory.get(0).setName("Newname");
-        System.out.println("AFTER: " + inv.inventory.get(0).getName());
+        System.out.println("BEFORE: " + inv.inventory.get("Broadsword").getName());
+        inv.inventory.get("Broadsword").setName("Newname");
+        System.out.println("AFTER: " + inv.inventory.get("Broadsword").getName());
 
-        
+        System.out.println(inv.inventory.get("Broadsword").specifyItemType());
+
 
         
     }

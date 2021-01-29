@@ -1,5 +1,6 @@
 package Mechanics.items;
 
-public class InventorySpot {
+public class Armor {
+    
     
 }

@@ -19,7 +19,7 @@ import org.json.simple.parser.JSONParser;
  * @version 0.2
  */
 public class Weapon extends Item {
-
+    
     //obj instance variables
     String identifier;
     String name;
@@ -58,7 +58,7 @@ public class Weapon extends Item {
     }
 
     //because of the extension of itemInterface
-    public ItemType specifyItemTypeOfClass() {
+    public ItemType specifiedItemType() {
         return ItemType.WEAPON;
     }
 

@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Weapon",
+            "request": "launch",
+            "mainClass": "Mechanics.items.Weapon",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Inventory",
+            "request": "launch",
+            "mainClass": "Mechanics.items.Inventory",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Enemy",
             "request": "launch",
             "mainClass": "Characters.Enemy",
