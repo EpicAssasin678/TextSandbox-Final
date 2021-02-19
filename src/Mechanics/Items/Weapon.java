@@ -114,7 +114,7 @@ public class Weapon extends Item {
         }
         build += "-------------------------------------------------------------\n";
         return build;
-}
+    }
 
 
     /**
@@ -166,6 +166,7 @@ public class Weapon extends Item {
 
     public static void main(String[] args) {
 
+        //!TEST OF POLYMORPHISM
         Weapon broadsword = new Weapon("Broadsword");
         System.out.println(broadsword.checkClass());
 

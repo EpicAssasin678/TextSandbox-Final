@@ -36,8 +36,10 @@ public class Inventory {
     
     /**
      * Passes in pointer and creates new item obj from fields of item obj, points to a new one in memory
-     * @param item
+     * 
      */
+
+    /*DEPRICATED
     public void addToInventory (Item item) {
         
         //System.out.println(item);
@@ -47,6 +49,7 @@ public class Inventory {
         System.out.println("An item was added to the inventory: " + inventory.get(item.getName()) + " at " + itemIndex);
  
      }
+     */
 
      /**
       * Passes in pointer and creates new item obj from fields of weapon obj, points to a new one in memory
@@ -74,7 +77,6 @@ public class Inventory {
         return this.inventory.toString();
     }
 
-
     public static void main(String[] args) {
         
         //instantiating INventory inv and Item test
@@ -97,7 +99,6 @@ public class Inventory {
         System.out.println("AFTER: " + inv.inventory.get("Broadsword").getName());
 
         System.out.println(inv.inventory.get("Broadsword").specifyItemType());
-
 
         
     }
