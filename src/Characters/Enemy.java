@@ -14,7 +14,6 @@ public class Enemy extends Character {
 
     }
 
-
     /**
      * Goblin class attack method
      */
@@ -42,3 +41,5 @@ public class Enemy extends Character {
         
     }
 }
+
+    

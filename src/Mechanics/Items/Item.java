@@ -57,6 +57,7 @@ public class Item implements ItemInterface {
     public Item () {
     }
 
+    //getters and setters 
     public String getName() {
         return this.name;
     }
@@ -86,22 +87,44 @@ public class Item implements ItemInterface {
         }
     }
 
-    //sets the pointedWeapon or Item and holds it within the instance of this item
-    //TODO make this work for every type of weapon
-    //!DELETE DEPRICATED RETARD 
-    public ItemType compareType () {
-        
-        if (this.type == "Weapon" || this.type == "weapon" || this.type == "WEAPON") {
-            setType("Weapon");
-            return ItemType.WEAPON;
-        }
-        else {
-
-            System.out.println("ERROR: TYPE HAS BEEN RESOLVED TO UNDEFINED, PLEASE ENTER ACCEPTABLE FORMS");
-            return ItemType.UNDEFINED;  
-        }
+    public Item clone() {
+        return this;
     }
 
+
+    /**
+     * Initializes a weapon item via the initWeapon() method from the WEapon class
+     * @param weapon
+     */
+
+    public static void main(String[] args) {
+        Item i = new Weapon();
+
+        try {
+            System.out.println((Object) i.getClass());
+            i.setName("Broadsword");
+
+            String currentClassStr = i.getClass().toString();
+            Item test = new Item("Broadsword", "Weapon");
+
+            System.out.println(test.getType());
+            //test.createTypeObj();
+            Weapon testBroadSword = test.pointedWeapon;
+            testBroadSword.generateAttackMap();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+
+    }
+
+    
+}
+
+
+
+    /**
     //!DELETE
     public void createTypeObj () {
 
@@ -123,34 +146,4 @@ public class Item implements ItemInterface {
         }
 
     }
-
-
-    /**
-     * Initializes a weapon item via the initWeapon() method from the WEapon class
-     * @param weapon
-     */
-
-    public static void main(String[] args) {
-        Item i = new Weapon();
-
-        try {
-            System.out.println((Object) i.getClass());
-            i.setName("Broadsword");
-
-            String currentClassStr = i.getClass().toString();
-            Item test = new Item("Broadsword", "Weapon");
-
-            System.out.println(test.getType());
-            test.createTypeObj();
-            Weapon testBroadSword = test.pointedWeapon;
-            testBroadSword.generateAttackMap();
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-
-    }
-
-    
-}
+    */

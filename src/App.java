@@ -1,9 +1,12 @@
 
 import java.io.IOException;
 import java.io.InputStream;
-
+import java.util.Scanner;
 
 import Characters.Character;
+import Mechanics.items.*;
+import Bin.*;
+
 
 public class App {
 
@@ -26,6 +29,48 @@ public class App {
         test.generateExpBar();
         test.displayXpStats();
         
+
+        //!THIS WORKS BUT NO COLOR
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            Process p1 = runtime.exec("C:\\Users\\epicd\\OneDrive\\Documents\\Java Projects\\TextSandbox\\src\\coloroutput");
+            InputStream is = p1.getInputStream();
+            int i = 0;
+            while( (i = is.read() ) != -1) {
+                System.out.print((char)i);
+            }
+        } catch(IOException ioException) {
+            System.out.println(ioException.getMessage() );
+        }
+
+
+
+    }
+
+
+    //NEEDS FIX
+    //make it static but return type character 
+    public static void createNewCharacter(String name) {
+        System.out.println("\nCharacter Creation: ");
+        PLAYER = new Character(name, 1, Character.CHARACTER_DEFAULT_EXP, Character.CHARACTER_DEFAULT_HEALTH);
+        PLAYER.displayCharacterStats();
+    }
+
+    
+    
+    //constructor for new App object
+    //game screen options basically, but hosts field for JFrame object "window"
+    
+}
+
+
+
+
+
+// RANDOM TESTS
+
+
+
         //randomDamage test
         //enemy.attack(test, 90);
 
@@ -50,39 +95,3 @@ public class App {
         //String path = "cmd /c start C:\\Users\\epicd\\OneDrive\\Documents\\Java Projects\\TextSandbox\\src\\coloroutput";
         //Runtime currentRuntime = Runtime.getRuntime();
         //Process runproc = currentRuntime.exec(path);
-
-        //!THIS WORKS BUT NO COLOR
-        Runtime runtime = Runtime.getRuntime();
-        try {
-            Process p1 = runtime.exec("C:\\Users\\epicd\\OneDrive\\Documents\\Java Projects\\TextSandbox\\src\\coloroutput");
-            InputStream is = p1.getInputStream();
-            int i = 0;
-            while( (i = is.read() ) != -1) {
-                System.out.print((char)i);
-            }
-        } catch(IOException ioException) {
-            System.out.println(ioException.getMessage() );
-        }
-        
-    }
-
-
-    //NEEDS FIX
-    //make it static but return type character 
-    public static void createNewCharacter(String name) {
-        System.out.println("\nCharacter Creation: ");
-        PLAYER = new Character(name, 1, Character.CHARACTER_DEFAULT_EXP, Character.CHARACTER_DEFAULT_HEALTH);
-        PLAYER.displayCharacterStats();
-    }
-
-    
-    
-
-
-
-    //constructor for new App object
-    //game screen options basically, but hosts field for JFrame object "window"
-    
-    
-    
-}

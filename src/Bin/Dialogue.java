@@ -86,7 +86,8 @@ public class Dialogue {
     }
 
     /**
-     * prints objects from arr that have the desiredkeyFilter + the index + 1
+     * Prints objects from array that have the desired keyFilter (String) + the index + 1.
+     * Keyfilter is a String type
      * @apiNote the for loop, iterating over the length of 'arr', Reply is set to the JSONObject at the index of int i
      * @apiNote is set to Reply at a key equal to keyFilter concatenated with int i
      * @param arr
@@ -298,10 +299,10 @@ public class Dialogue {
             
             //System.out.println("breakPoint was triggered, layer is subtracted by 1. \nLayer is now " + getLAYER());
         }
-
+        
         if (breaknow != true) {
             System.out.println("\nREPLY INTEGER IS SET TO: " + replyInt);
-            //reply section
+            //reply section, moves through JSON data to print feedback arrays
             
             JSONArray dialogueFeedback = (JSONArray) jDialogue1.get(DialogueID.concat("Feedback"));
             JSONObject dialogueFeedbackLayer = (JSONObject) dialogueFeedback.get(getLAYER());
@@ -367,4 +368,5 @@ public class Dialogue {
 
     }
 
+    
 }

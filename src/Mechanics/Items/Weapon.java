@@ -1,11 +1,8 @@
 package Mechanics.items;
 
 import java.io.FileReader;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import javax.swing.border.Border;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -29,6 +26,7 @@ public class Weapon extends Item {
     JSONParser parser = new JSONParser();
     Weapon referenced;
 
+    //for attack maps 
     ArrayList <String> attackNames = new ArrayList<String>();
     ArrayList <Integer> attackValues = new ArrayList<Integer>();
     HashMap <String, Integer> attackMap = new HashMap<String, Integer>(); 
@@ -54,7 +52,7 @@ public class Weapon extends Item {
      * Default blank weapon constructor
      */
     public Weapon () {
-        
+       super(); 
     }
 
     //because of the extension of itemInterface
@@ -99,31 +97,14 @@ public class Weapon extends Item {
         return attackMap;
     }
 
-    /**
-     * Prints out a summary view of the weapons attacks and respective damage.
-     * @return String build
-     */
-    public String printAttackMap () {
-
-        String build = "";
-        build += "\n" + super.name + "'s Attacks:\n";
-        build += "-------------------------------------------------------------\n";
-        //make a foreach loop to a String and concatenate it
-        for (String i: this.attackMap.keySet()) {
-            build += "Attack: " + i + " | Damage: " + attackMap.get(i) + "HP\n";
-        }
-        build += "-------------------------------------------------------------\n";
-        return build;
-    }
-
+    JSONObject jWeapon;
 
     /**
-     * meant only to add to the ArrayLists associated with the Weapon object
+     * Meant only to add to the ArrayLists associated with the Weapon object.
+     * 
      * @see uses the generateAttacks() method
      * @param weaponName
      */
-
-    JSONObject jWeapon;
     public void initWeapon(String weaponName) {
 
         System.out.println("\ninitWeapon() called\nWeapon: " + (Object) this.getClass().toString() + "@" + Integer.toHexString(this.hashCode()) + " Has been initialised.\n");
@@ -149,8 +130,11 @@ public class Weapon extends Item {
         System.out.println("\n");
     }
 
+//Weapon print options
+
+
     /**
-     * Prints a form view of the Item, useful for looking at changes or all values of the class.
+     * Prints a form view of the Item, useful for looking at changes or all values of the class fields.
      * @return String formStr
      */
     public String printForm() {
@@ -164,10 +148,29 @@ public class Weapon extends Item {
         return formStr;
     }
 
+    /**
+     * Prints out a summary view of the weapons attacks and respective damage in an Hashmap form. 
+     * 
+     * @return String build
+     */
+    public String printAttackMap () {
+
+        String build = "";
+        build += "\n" + this.name + "'s Attacks:\n";
+        build += "-------------------------------------------------------------\n";
+        //make a foreach loop to a String and concatenate it
+        for (String i: this.attackMap.keySet()) {
+            build += "Attack: " + i + " | Damage: " + attackMap.get(i) + "HP\n";
+        }
+        build += "-------------------------------------------------------------\n";
+        return build;
+    }
+
     public static void main(String[] args) {
 
         //!TEST OF POLYMORPHISM
         Weapon broadsword = new Weapon("Broadsword");
+        Item subBroad= new Weapon("Broadsowrd");
         System.out.println(broadsword.checkClass());
 
         //System.out.println(broadsword.printAttackMap());
@@ -185,6 +188,8 @@ public class Weapon extends Item {
         broadsword.setName("WimpySword");
         System.out.println(broadsword.getName());
         System.out.println(broadsword.name);
+        
+        //System.out.println(broadsword.checkClass());
         
         
     }

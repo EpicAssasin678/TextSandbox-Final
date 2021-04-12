@@ -38,6 +38,8 @@ Option #1 would allow me to reference by an Index already, but would be tricky a
 2. A Hashmap with ArrayLists to be the value and ints as keys to act as an index
 Option #2 would be more fond personally as items can be looked up accurately by their key rather than an index. The random lookup would be ignored. Only problem with this is the idea of having indexes are still unknown. This option would simulate an index bot not really create one, and the index may need to be tracked over other methods that modify position of items.
 
+
+
 ### Item Class
 
 The item class will be instnatiated by item obj, item obj only needs 2 fields really which is the name and what it points to. All other variables can be instance variables.

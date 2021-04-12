@@ -33,24 +33,6 @@ public class Inventory {
     public Inventory () {
     }
 
-    
-    /**
-     * Passes in pointer and creates new item obj from fields of item obj, points to a new one in memory
-     * 
-     */
-
-    /*DEPRICATED
-    public void addToInventory (Item item) {
-        
-        //System.out.println(item);
-        //System.out.println(item.getName());
-        item = new Item(item.getName());
-        inventory.put(item.getName(), item);
-        System.out.println("An item was added to the inventory: " + inventory.get(item.getName()) + " at " + itemIndex);
- 
-     }
-     */
-
      /**
       * Passes in pointer and creates new item obj from fields of weapon obj, points to a new one in memory
       * @param weapon
@@ -103,3 +85,21 @@ public class Inventory {
         
     }
 }
+
+
+    /**
+     * Passes in pointer and creates new item obj from fields of item obj, points to a new one in memory
+     * 
+     */
+
+    /*DEPRICATED
+    public void addToInventory (Item item) {
+        
+        //System.out.println(item);
+        //System.out.println(item.getName());
+        item = new Item(item.getName());
+        inventory.put(item.getName(), item);
+        System.out.println("An item was added to the inventory: " + inventory.get(item.getName()) + " at " + itemIndex);
+ 
+    }
+     */

@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Item",
+            "request": "launch",
+            "mainClass": "Mechanics.items.Item",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
             "name": "Launch Weapon",
             "request": "launch",
             "mainClass": "Mechanics.items.Weapon",
