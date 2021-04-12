@@ -1,7 +1,8 @@
 
 package Characters;
 
-import Mechanics.Items.*;
+import Mechanics.items.*;
+
 
 /**
  * Character Class
@@ -82,7 +83,7 @@ public class Character {
     }
 
     public Character() {
-
+        
     }
 
     public Integer getDefaultHealth() {
@@ -142,11 +143,6 @@ public class Character {
     /*
      * will create an experience bar system that will look something like this: XP
      * METER: [***** ] (current experiece/exp needed for next level)
-     *
-     * FUNCTIONALITY: -will take in parameters for a string -calculate through
-     * counting through exp -have the needed percentage to fill be: exp/expneeded =>
-     * use percentage to count how many "*" to add to the bar and how much " " is
-     * remainder
      * 
      * may be a problem in the future, but if done repeadetly it may
      * add again and again on top of itself
@@ -163,13 +159,6 @@ public class Character {
 
         int barFill = (int)(levelCompletion / .10);
         //System.out.println("barFill = " + barFill);
-        
-        /*
-        for (int d = 0; d <= (int) levelCompletion; d++) {
-            if (d%10 == 0) {
-                barFill += 1;
-            }
-        }   */
         
         for (int i = 0; i < barFill; i++) {
             this.expBar += "*";
@@ -194,36 +183,6 @@ public class Character {
 
     }
 
-    //do not know if I should pass through parameters or not
-    public void displayXpStats() {
-        System.out.println("\nExperience Statistics:");
-        System.out.println("Exp: " + expBar);
-        System.out.println("Level " + (1 + level) + " Completion: " + exp + "/" + expToNextLevel + "");
-    }
-
-    //specific for character
-    public void displayCharacterStats(Character currentCharacter) {
-        //basic character stats
-        System.out.println("\nName: " + currentCharacter.getName());
-        System.out.println("Level: ");
-        System.out.println("Exp: ");
-
-    }
-
-    //overloaded form
-    public void displayCharacterStats() {
-        //basic character stats
-        System.out.println("Name: " + this.getName());
-        System.out.println("Level: " + level);
-        System.out.println("Exp: "  + exp);
-
-    }
-
-    //basically displayCharacterStats()
-    public String toString() {
-        return "\nName: " + this.getName() + "\nLevel: " + level + "\nExp: " + exp + "\nHealth: " + health;
-    }
-    
     public void attack(Character Target, int damage) {
         Target.setHealth(Target.getHealth() - damage);
         
@@ -239,6 +198,40 @@ public class Character {
         //debug options
         System.out.println( "Damage is: " + damage);
     }
+
+    //do not know if I should pass through parameters or not
+    public void displayXpStats() {
+        System.out.println("\nExperience Statistics:");
+        System.out.println("Exp: " + expBar);
+        System.out.println("Level " + (1 + level) + " Completion: " + exp + "/" + expToNextLevel + "");
+    }
+
+    //specific for character
+    /** REDUNDANT
+    public void displayCharacterStats(Character currentCharacter) {
+        //basic character stats
+        System.out.println("\nName: " + currentCharacter.getName());
+        System.out.println("Level: ");
+        System.out.println("Exp: ");
+
+    }
+    */
+
+    //overloaded form
+    public void displayCharacterStats() {
+        //basic character stats
+        System.out.println("Name: " + this.getName());
+        System.out.println("Level: " + level);
+        System.out.println("Exp: "  + exp);
+
+    }
+
+    //basically displayCharacterStats()
+    public String toString() {
+        return "\nName: " + this.getName() + "\nLevel: " + level + "\nExp: " + exp + "\nHealth: " + health;
+    }
+    
+
    
     public static void init() {
         
@@ -258,11 +251,6 @@ public class Character {
 
     }
     */
-    
-
-    
-
-
     
     public static void main(String[] args) {
         

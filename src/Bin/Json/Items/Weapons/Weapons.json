@@ -3,14 +3,19 @@
         "Attacks" : [
             {
                 "name" : "Stab",
-                "damage" : 10
+                "damage" : 10,
+                "description" : "A light stab, no hard attack."
             },
             {
                 "name" : "Heavy Swing",
-                "damage" : 20
+                "damage" : 20,
+                "description" : "A hard swing with all your might. 10 Additional hard attack."
             }
            
         ]
+
+    },
+    "Fire Scabbard" : {
 
     }
 }

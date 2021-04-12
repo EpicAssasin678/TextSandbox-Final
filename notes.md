@@ -1,5 +1,18 @@
-# Potential Functions
-## The generate experience bar tool:
+# Development Notes/Log
+
+## Development Workflow
+The following is most likely going to be the way that this project is developed moving forward. Hopefully in order.
+
+1. Item Package - complete functionality for classes: Item, Weapon, Potion, Key Item, etc.
+2. Inventory System - complete the Inventory Class and make a container class for chests/traders
+3. Combat System - complete the combat system using the item and inventory system
+4. Create Grid System - necessary to make a map, triggers, etc.
+5. Finish Character System, finalize USER experience, enemies, traders, etc.
+6. Map Runtime - create dialogue and story
+7. (Optional) Create GUI
+
+## Potential Functions
+### The generate experience bar tool:
     
 
     public void generateExperienceBar() {
@@ -174,88 +187,128 @@ import org.json.simple.parser.JSONParser;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Dialogue {
+    public class Dialogue {
 
-    static JSONParser parser = new JSONParser();
-    public boolean hasReply = false;
-    public String conversationIdentifier;
+        static JSONParser parser = new JSONParser();
+        public boolean hasReply = false;
+        public String conversationIdentifier;
 
-    //empty constructor
-    public Dialogue() {
+        //empty constructor
+        public Dialogue() {
 
-    }
-    
-    public static String conversationOutput (String dialogue_id) {
-        return dialogue_id;
-    }
-    
-    //String getDialogueID to grab name from key selection
-    public void initConversation (String getDialogueID) throws Exception {
-        //sets the reference dialogue key for the later reply methods
-        conversationIdentifier = getDialogueID;
-        //go from object to JSONObject
-        Object dialogueIn = parser.parse(new FileReader("src\\Bin\\Conversations.json"));
-        JSONObject jDialogue1 = (JSONObject) dialogueIn;
-
-        //casted the jDialogue1 into a new type of input 
-        String dialogueOut = (String) jDialogue1.get(getDialogueID);
-        System.out.println(dialogueOut);
-
-        //instantiates a JSONArray obj from jDialogue obj
-        JSONArray dialogueOptions = (JSONArray) jDialogue1.get(getDialogueID.concat("Options"));
-
-        /** DEBUGS
-        System.out.println("ARRAY NAME: " + getDialogueID.concat("Options"));
-        System.out.println("ARRAY PAIRED: " + dialogueOptions);
-        */
-        
-        System.out.println("\nYour Response: ");
-
-        //for loop iterates over the elements in the array
-        for (int i = 0; i < dialogueOptions.size(); i++) {
-
-            JSONObject option = (JSONObject) dialogueOptions.get(i);
-
-            //DEBUG System.out.println("ELEMENT IS: " + dialogueOptions.get(i));
-
-            String optionStr = (String) option.get("option" + Integer.toString(i + 1));
-
-            /** DEBUG 
-            *  System.out.println("DEBUG " + "option" + Integer.toString(i + 1));
-            *    System.out.println("Found " + optionStr);
-            */
-
-            
-            System.out.println("[" + i + "] " + optionStr);
-
-            if (i == dialogueOptions.size() && dialogueOptions.size() != 0) {
-                System.out.println("\n");
-            }
         }
         
+        public static String conversationOutput (String dialogue_id) {
+            return dialogue_id;
+        }
+        
+        //String getDialogueID to grab name from key selection
+        public void initConversation (String getDialogueID) throws Exception {
+            //sets the reference dialogue key for the later reply methods
+            conversationIdentifier = getDialogueID;
+            //go from object to JSONObject
+            Object dialogueIn = parser.parse(new FileReader("src\\Bin\\Conversations.json"));
+            JSONObject jDialogue1 = (JSONObject) dialogueIn;
+
+            //casted the jDialogue1 into a new type of input 
+            String dialogueOut = (String) jDialogue1.get(getDialogueID);
+            System.out.println(dialogueOut);
+
+            //instantiates a JSONArray obj from jDialogue obj
+            JSONArray dialogueOptions = (JSONArray) jDialogue1.get(getDialogueID.concat("Options"));
+
+            /** DEBUGS
+            System.out.println("ARRAY NAME: " + getDialogueID.concat("Options"));
+            System.out.println("ARRAY PAIRED: " + dialogueOptions);
+            */
+            
+            System.out.println("\nYour Response: ");
+
+            //for loop iterates over the elements in the array
+            for (int i = 0; i < dialogueOptions.size(); i++) {
+
+                JSONObject option = (JSONObject) dialogueOptions.get(i);
+
+                //DEBUG System.out.println("ELEMENT IS: " + dialogueOptions.get(i));
+
+                String optionStr = (String) option.get("option" + Integer.toString(i + 1));
+
+                /** DEBUG 
+                *  System.out.println("DEBUG " + "option" + Integer.toString(i + 1));
+                *    System.out.println("Found " + optionStr);
+                */
+
+                
+                System.out.println("[" + i + "] " + optionStr);
+
+                if (i == dialogueOptions.size() && dialogueOptions.size() != 0) {
+                    System.out.println("\n");
+                }
+            }
+            
+
+        }
+
+        public static void userReply () {
+
+        }
+        /**
+        * new initConversation method
+        * @param args
+        * @throws Exception
+        * 
+        *  will pass in a dialogue id that is an identifier for the key value of the dialogue option
+        *  the String value of the arguemnt can get concatenated and depending on structure a for each loop can iterate the next key's response
+        * 
+        */
+        
+        public static void main(String[] args) throws Exception {
+            
+            Dialogue rightNow = new Dialogue();
+            rightNow.initConversation("dialogueEvent01");
+            
+
+            
+        }
 
     }
 
-    public static void userReply () {
+# General Notes Moving Forward in v0.5
+>Skill Points will be acquired after a level up occurs. 
 
-    }
-    /**
-     * new initConversation method
-     * @param args
-     * @throws Exception
-     * 
-     *  will pass in a dialogue id that is an identifier for the key value of the dialogue option
-     *  the String value of the arguemnt can get concatenated and depending on structure a for each loop can iterate the next key's response
-     * 
-     */
-    
-    public static void main(String[] args) throws Exception {
-        
-        Dialogue rightNow = new Dialogue();
-        rightNow.initConversation("dialogueEvent01");
-        
+# Combat System Rough Draft
 
-        
-    }
+>Skills will affect the actual damage of the attack given out after all modifiers are present. 
 
-}
+## Damage Calculations
+
+<em>The following is a tentative way damage will be calculated.</em>
+
+- T(w) = total damage outputted 
+- w = weapon damage
+- a = addiditive modifer sum
+- s = subtractive modifier
+- d = divisive modifier 
+- x = multiplicative modifier
+
+<em> Thus the general form of the equation follows: </em>
+
+[ADDATIVE] T(w) = ( ( (w + a) - s ) * x ) / d
+
+>NOTE: This equation may not be static, as a matter of a fact, the function may be overloaded or programmed as a general type. This is because certain attacks or skills hould affect or be calculated differently then the standard equation.
+
+ The following is the equation for an additive modifier: 
+- a = additive modifier total 
+- w = weapon damage 
+- m = original modifier amount
+
+In this example, the modifier will be m = (1/2) * w :
+
+a =m
+
+a = w + ((1/2) * w)
+
+<em>This is why specificity in the modifier may be essential. </em>
+
+>NOTE: To get around the problem of complexity that this type of structure induces, a big switch function may be a way to cut down on complexity.
+

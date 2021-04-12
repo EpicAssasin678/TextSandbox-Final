@@ -1,4 +1,4 @@
-package Mechanics.Items;
+package Mechanics.items;
 
 import java.io.File;
 import java.io.FileReader;
@@ -16,7 +16,7 @@ import org.json.simple.parser.*;
  * 
  */
 
-public class Item {
+public class Item implements ItemInterface {
     
     //instance varaibles
     public String identifier;
@@ -27,27 +27,23 @@ public class Item {
     public JSONParser parser;
     public Scanner userPrompt;
     
+    //this will be the Weapon that the item object actually represents as an instance of the object class 
+    public Weapon pointedWeapon;
     
-    public Item (String identifier, String name) {
+    public Item (String name) {
         
-        this.identifier = identifier;
         this.name = name;
         
     }
 
-    
-    public Item (String identifier, String name, String type) {
-        
-        this.identifier = identifier;
+    public Item (String name, String type) {
         this.name = name;
         this.type = type;
 
     }
     
-    
-    public Item (String identifier, String name, String type, String description) {
+    public Item (String name, String type, String description) {
         this.description = description;
-        this.identifier = identifier;
         this.name = name;
         this.type = type;
         
@@ -58,23 +54,10 @@ public class Item {
         
     }
     
-    public Item (String name) {
-        this.name = name;
-    }
-
     public Item () {
-
     }
 
-    //! getter and setters below
-    public String getIdentifier() {
-        return this.identifier;
-    }
-
-    public void setIdentifier(String set) {
-        this.identifier = set;
-    }
-
+    //getters and setters 
     public String getName() {
         return this.name;
     }
@@ -91,6 +74,11 @@ public class Item {
         this.type = set;
     }
 
+    //because of the extension of ItemInterface
+    public ItemType specifyItemType() {
+        return ItemType.UNDEFINED;
+    }
+
     public String checkClass() {
         if (this.getClass().toString() == "Item") {
             return "Item";
@@ -99,24 +87,15 @@ public class Item {
         }
     }
 
-    public void printItemProperties(String key, String properties) {
-
+    public Item clone() {
+        return this;
     }
+
 
     /**
      * Initializes a weapon item via the initWeapon() method from the WEapon class
      * @param weapon
      */
-    public void initItem (Weapon weapon) {
-
-        weapon.initWeapon(weapon.getName());
-
-    }
-
-    public Weapon toWeapon (Item item) {
-        Weapon weapon = new Weapon(item.name);
-        return weapon;
-    }
 
     public static void main(String[] args) {
         Item i = new Weapon();
@@ -125,9 +104,13 @@ public class Item {
             System.out.println((Object) i.getClass());
             i.setName("Broadsword");
 
-            
+            String currentClassStr = i.getClass().toString();
+            Item test = new Item("Broadsword", "Weapon");
 
-
+            System.out.println(test.getType());
+            //test.createTypeObj();
+            Weapon testBroadSword = test.pointedWeapon;
+            testBroadSword.generateAttackMap();
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -138,3 +121,29 @@ public class Item {
 
     
 }
+
+
+
+    /**
+    //!DELETE
+    public void createTypeObj () {
+
+        ItemType comparedItem = compareType();
+
+        switch (comparedItem) {
+            case WEAPON:
+            //set thte instance of the item object 
+            //transfers Item instance field to Weapon instance field
+            
+            System.out.println("CASE WEAPON FOUND");
+            if (this.name != null) {
+                this.pointedWeapon = new Weapon(this.name);
+                System.out.println("Item " + this.name + " pointedWeapon has been set to " + this.pointedWeapon.toString());
+                if (this.identifier != null) {
+                }
+            }
+
+        }
+
+    }
+    */

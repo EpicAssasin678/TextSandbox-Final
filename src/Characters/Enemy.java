@@ -10,6 +10,9 @@ public class Enemy extends Character {
 
     }
 
+    public void enemMethod() {
+
+    }
 
     /**
      * Goblin class attack method
@@ -28,14 +31,15 @@ public class Enemy extends Character {
     public static void main(String[] args) {
         Character goblin = new Enemy("Goblin", 1, 100);
         System.out.println(goblin.getName());
-
+        
         Character hero = new Character("Zach", 1);
         hero.attack(goblin, 20);
         hero.attack(goblin, 20);
         goblin.attack(hero, 20);    
         
         goblin.attack(hero, 30);
-
         
     }
 }
+
+    

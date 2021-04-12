@@ -1,6 +1,9 @@
 package Mechanics.combat;
 
+import java.util.Random;
+
 import Characters.Character;
+import Mechanics.items.*;
 
 public class Combat  {
     
@@ -12,7 +15,6 @@ public class Combat  {
      */
     
     public double ranDamage;
-
     
     public void attack(Character Target, int damage) {
         Target.setHealth(Target.getHealth() - damage);
@@ -31,14 +33,19 @@ public class Combat  {
      * character uses an attack, which has the potential damage range 
      * of 21-35
      */
-    public void damageRange() {
-
+    public int damageRange(int min, int max) {
+        Random randInt = new Random();
+        return randInt.ints(1, min, max).sum();
+        
     }
-
-
 
 
     public void damageCalc() {
 
+    }
+
+
+    public static void main(String[] args) {
+        
     }
 }

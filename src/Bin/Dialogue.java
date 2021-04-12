@@ -22,8 +22,6 @@ public class Dialogue {
     public int replyInt;
     public boolean breaknow = false;
     
-
-
     //empty constructor
     public Dialogue() {
 
@@ -75,7 +73,7 @@ public class Dialogue {
         hasReply = setto;
     }
 
-    public void setBreakPoint (boolean setto) {
+    public void setBreakPointTriggered (boolean setto) {
         breakPointTriggered = setto;
     }
 
@@ -88,7 +86,8 @@ public class Dialogue {
     }
 
     /**
-     * prints objects from arr that have the desiredkeyFilter + the index + 1
+     * Prints objects from array that have the desired keyFilter (String) + the index + 1.
+     * Keyfilter is a String type
      * @apiNote the for loop, iterating over the length of 'arr', Reply is set to the JSONObject at the index of int i
      * @apiNote is set to Reply at a key equal to keyFilter concatenated with int i
      * @param arr
@@ -207,7 +206,7 @@ public class Dialogue {
         //System.out.println("\ngetFeedback function called, method was called as: " + "\ngetFeedback(" + arr + ", " + Feedback + ", " + Integer.toString(ReplyInt) + ") \n");
 
         //int FeedbackIndex = arr.indexOf(Feedback);
-        //? Have not made a solution to correlate with the LAYER it was chosen from 
+        //! Have not made a solution to correlate with the LAYER it was chosen from 
         //System.out.println("Key value looked for is: feedback" + Integer.toString(ReplyInt));
         printCertainObject(arr, Feedback, "feedback", ReplyInt);
 
@@ -277,7 +276,7 @@ public class Dialogue {
             
             //System.out.println("Entered in breakpoint");
             //if so, then decrements the layer;
-            setBreakPoint(true);
+            setBreakPointTriggered(true);
 
         }
 
@@ -300,10 +299,10 @@ public class Dialogue {
             
             //System.out.println("breakPoint was triggered, layer is subtracted by 1. \nLayer is now " + getLAYER());
         }
-
+        
         if (breaknow != true) {
             System.out.println("\nREPLY INTEGER IS SET TO: " + replyInt);
-            //reply section
+            //reply section, moves through JSON data to print feedback arrays
             
             JSONArray dialogueFeedback = (JSONArray) jDialogue1.get(DialogueID.concat("Feedback"));
             JSONObject dialogueFeedbackLayer = (JSONObject) dialogueFeedback.get(getLAYER());
@@ -329,9 +328,10 @@ public class Dialogue {
         //recursion control
         if (loopCount <= TARGET && breaknow == false) {
 
-            initConversation(DialogueID);
             //resets breakpoint
             breakPointTriggered = false;
+            initConversation(DialogueID);
+
 
         } else {
 
@@ -366,7 +366,7 @@ public class Dialogue {
         //rightNow.initDialogue("dialogueEvent01");
         rightNow.initConversation("dialogueEvent01");
 
-        
     }
 
+    
 }

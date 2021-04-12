@@ -8,5 +8,6 @@
     ],
     "maven.view": "hierarchical",
     "java.dependency.packagePresentation": "hierarchical",
-    "git.decorations.enabled": false
+    "git.decorations.enabled": false,
+    "FSharp.fsacRuntime": "net"
 }
