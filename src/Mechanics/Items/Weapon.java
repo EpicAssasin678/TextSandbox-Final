@@ -19,7 +19,7 @@ public class Weapon extends Item {
     
     //obj instance variables
     String identifier;
-    String name;
+    protected String name;
     String description;
     
     //parser var
@@ -53,6 +53,16 @@ public class Weapon extends Item {
      */
     public Weapon () {
        super(); 
+    }
+
+    //overWrites Item
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 
     //because of the extension of itemInterface
@@ -170,7 +180,7 @@ public class Weapon extends Item {
 
         //!TEST OF POLYMORPHISM
         Weapon broadsword = new Weapon("Broadsword");
-        Item subBroad= new Weapon("Broadsowrd");
+       // Item subBroad= new Weapon("Broadsowrd");
         System.out.println(broadsword.checkClass());
 
         //System.out.println(broadsword.printAttackMap());
@@ -188,6 +198,7 @@ public class Weapon extends Item {
         broadsword.setName("WimpySword");
         System.out.println(broadsword.getName());
         System.out.println(broadsword.name);
+        
         
         //System.out.println(broadsword.checkClass());
         

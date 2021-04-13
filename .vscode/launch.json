@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch InventoryGUI",
+            "request": "launch",
+            "mainClass": "Mechanics.items.InventoryGUI",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
+            "name": "Launch Combat",
+            "request": "launch",
+            "mainClass": "Mechanics.combat.Combat",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
             "name": "Launch Item",
             "request": "launch",
             "mainClass": "Mechanics.items.Item",

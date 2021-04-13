@@ -17,20 +17,22 @@ import org.json.simple.*;
 public class Inventory {
     
     //instance variables
+    HashMap <String, Item> inventory = new HashMap<String, Item>();
     int itemIndex = 0;
+
+    //already methods within HashMap, but carrying over
+    int size = inventory.size();
+    
+    
 
     //? inventory is just an instance variable of the class instead of any object 
     //? do we even need an object form of the class and if so what can we make static????(ie)
     //? if this was so, Item would need an implicit superconstructor
     //TODO change HashMap to type <String, Item> instead
-    HashMap <String, Item> inventory = new HashMap<String, Item>();
-
     
-    public Inventory (HashMap <Integer, Item> inv) {
-        
-    }
 
     public Inventory () {
+
     }
 
      /**
@@ -50,10 +52,20 @@ public class Inventory {
     public void addToInventory(Potion potion) {
 
         //Implement the potion type 
-
+        System.out.println(potion);
 
     }
-  
+
+    //acessor to privatize 
+    public HashMap <String, Item> getMap () {
+        return this.inventory;
+    }
+
+    public String[] getKeySet() {
+        //returns an array of the keys
+        return (String[]) this.inventory.keySet().toArray();
+    }
+
 
     public String toString() {
         return this.inventory.toString();
