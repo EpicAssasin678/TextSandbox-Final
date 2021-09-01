@@ -28,21 +28,7 @@ public class Dialogue {
     }
     
     // instance for TICK level
-    public int TICKER;
-
-    /**
-     * 
-     * @param ticker
-     */
-    public void setTICKER (int ticker) {
-
-        this.TICKER = ticker;
     
-    }
-
-    public Integer getTICKER () {
-        return this.TICKER;
-    }
 
     public int LAYER;
     //for realoding backwards
@@ -365,7 +351,7 @@ public class Dialogue {
         Dialogue rightNow = new Dialogue();
         //rightNow.initDialogue("dialogueEvent01");
         rightNow.initConversation("dialogueEvent01");
-
+        
     }
 
     

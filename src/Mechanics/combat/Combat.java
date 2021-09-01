@@ -7,15 +7,22 @@ import Mechanics.items.*;
 
 public class Combat  {
     
+
+    public double ranDamage;
+    //Modifications
+    public static final String[] modKey = {"DEFAULT"};
+    public static final double[] addMods = {0, };
+    public static final double[] subMods = {0, };
+    public static final double[] mulMods = {1, };
+    public static final double[] divMods = {1, };
+    
     /**
      * default attack method
      * @param Character target
      * 
      * make the attack set the health minus whatever damage
      */
-    
-    public double ranDamage;
-    
+        
     public void attack(Character Target, int damage) {
         Target.setHealth(Target.getHealth() - damage);
     }
@@ -40,11 +47,14 @@ public class Combat  {
     }
 
 
-    public void damageCalc() {
-
+    public static double damageCalc(double damageBase, double addModSum, 
+    double subModSum, double mulModSum, double divModSum) {
+        
+        double T = (((damageBase + addModSum) - subModSum) * mulModSum) / divModSum;
+        return T;
     }
 
-
+    
     public static void main(String[] args) {
         
     }
