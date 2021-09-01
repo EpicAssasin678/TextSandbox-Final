@@ -22,10 +22,13 @@ public class Character {
     public int level;
     public double exp;
     public int health;
+    
+    public Inventory characterInventory = new Inventory();
 
     //for insufficient field filling
     public static int CHARACTER_DEFAULT_HEALTH = 100;
     public static int CHARACTER_DEFAULT_EXP = 0;
+    
     
     //for xp stats
     public double expToNextLevel;
