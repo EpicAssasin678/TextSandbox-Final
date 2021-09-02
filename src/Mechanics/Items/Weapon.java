@@ -27,8 +27,9 @@ public class Weapon extends Item {
     Weapon referenced;
 
     //for attack maps 
-    ArrayList <String> attackNames = new ArrayList<String>();
-    ArrayList <Integer> attackValues = new ArrayList<Integer>();
+    String[] attackDescriptions = new String[20];
+    public ArrayList <String> attackNames = new ArrayList<String>();
+    public ArrayList <Integer> attackValues = new ArrayList<Integer>();
     HashMap <String, Integer> attackMap = new HashMap<String, Integer>(); 
     
     boolean weaponHasGenerated = false;
@@ -70,19 +71,26 @@ public class Weapon extends Item {
         return ItemType.WEAPON;
     }
 
+    public HashMap <String, Integer> getAttackMap() {
+        return this.attackMap;
+    }
+
     public void generateAttacks(JSONArray arr) {
         
         for (int i = 0; i < arr.size(); i++) {
 
             JSONObject obj = (JSONObject) arr.get(i);
+
             String objStr = (String) obj.get("name");
             attackNames.add(objStr);
             System.out.println(attackNames);
             
-            long objInt = (Long) obj.get("damage");
-            
+            long objInt = (Long) obj.get("damage");           
             attackValues.add((int) objInt);
             System.out.println(attackValues);
+
+            String desc = (String) obj.get("description");
+            attackDescriptions[i] = desc;
         }
     }
 
@@ -91,7 +99,7 @@ public class Weapon extends Item {
      * 
      * @return HashMap attackMap
      */
-    public HashMap generateAttackMap () {
+    public HashMap<String, Integer> generateAttackMap () {
 
         System.out.println("generateAttackMap() called");
         try {
@@ -107,7 +115,7 @@ public class Weapon extends Item {
         return attackMap;
     }
 
-    JSONObject jWeapon;
+    JSONObject jWeapons;
 
     /**
      * Meant only to add to the ArrayLists associated with the Weapon object.
@@ -121,13 +129,13 @@ public class Weapon extends Item {
         try {
 
             Object weaponFile = parser.parse(new FileReader("src\\Bin\\Json\\Items\\Weapons\\Weapons.json"));
-            jWeapon = (JSONObject) weaponFile;
-            JSONObject pointedWeapon = (JSONObject) jWeapon.get(weaponName);
+            jWeapons = (JSONObject) weaponFile;
+            JSONObject pointedWeapon = (JSONObject) jWeapons.get(weaponName);
             JSONArray weaponAttacks = (JSONArray) pointedWeapon.get("Attacks");
             
             //DEBUG
             System.out.println(weaponFile);
-            System.out.println(jWeapon);
+            System.out.println(jWeapons);
             System.out.println(pointedWeapon);
 
             this.generateAttacks(weaponAttacks);
@@ -170,7 +178,8 @@ public class Weapon extends Item {
         build += "-------------------------------------------------------------\n";
         //make a foreach loop to a String and concatenate it
         for (String i: this.attackMap.keySet()) {
-            build += "Attack: " + i + " | Damage: " + attackMap.get(i) + "HP\n";
+            build += "Attack: " + i + " | Damage: " + attackMap.get(i) + "HP\n" +
+            attackDescriptions[attackNames.indexOf(i)] + "\n\n";
         }
         build += "-------------------------------------------------------------\n";
         return build;
@@ -198,7 +207,7 @@ public class Weapon extends Item {
         broadsword.setName("WimpySword");
         System.out.println(broadsword.getName());
         System.out.println(broadsword.name);
-        
+        System.out.println(broadsword.printAttackMap());
         
         //System.out.println(broadsword.checkClass());
         

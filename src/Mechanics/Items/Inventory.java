@@ -17,12 +17,12 @@ import org.json.simple.*;
 public class Inventory {
     
     //instance variables
-    HashMap <String, Item> inventory = new HashMap<String, Item>();
+    public HashMap <String, Item> inventory = new HashMap<String, Item>();
     int itemIndex = 0;
 
     //already methods within HashMap, but carrying over
-    int size = inventory.size();
-    
+    int size = 0;
+    int maxSize;
     
 
     //? inventory is just an instance variable of the class instead of any object 
@@ -32,7 +32,11 @@ public class Inventory {
     
 
     public Inventory () {
+        this.maxSize = 20;
+    }
 
+    public Inventory (int maxsize) {
+        this.maxSize = maxsize;        
     }
 
      /**
@@ -53,7 +57,8 @@ public class Inventory {
 
         //Implement the potion type 
         System.out.println(potion);
-
+        //potion = new Potion(potion.getName());
+        
     }
 
     //acessor to privatize 
@@ -74,6 +79,7 @@ public class Inventory {
     public static void main(String[] args) {
         
         //instantiating INventory inv and Item test
+    
         Inventory inv = new Inventory();
         Weapon testWeapon = new Weapon("Broadsword");
 
@@ -93,7 +99,7 @@ public class Inventory {
         System.out.println("AFTER: " + inv.inventory.get("Broadsword").getName());
 
         System.out.println(inv.inventory.get("Broadsword").specifyItemType());
-
+        
         
     }
 }

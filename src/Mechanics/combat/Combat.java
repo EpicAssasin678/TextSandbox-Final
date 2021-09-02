@@ -9,22 +9,21 @@ public class Combat  {
     
 
     public double ranDamage;
-    //Modifications
-    public static final String[] modKey = {"DEFAULT"};
-    public static final double[] addMods = {0, };
-    public static final double[] subMods = {0, };
-    public static final double[] mulMods = {1, };
-    public static final double[] divMods = {1, };
+
+    //!USELESS FOR THE TIME BEING
+
     
     /**
+     * make the attack set the health minus whatever damage
      * default attack method
      * @param Character target
      * 
-     * make the attack set the health minus whatever damage
+     * 
      */
         
-    public void attack(Character Target, int damage) {
+    public static void attack(Character Target, int damage) {
         Target.setHealth(Target.getHealth() - damage);
+        System.out.println(Target.getName() + "was attacked" + damage + "HP");
     }
     
     public void dealRandomDamage(Character Target) {
@@ -54,6 +53,9 @@ public class Combat  {
         return T;
     }
 
+    
+
+    
     
     public static void main(String[] args) {
         

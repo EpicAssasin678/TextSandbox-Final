@@ -1,6 +1,8 @@
 
 package Characters;
 
+import java.io.File;
+
 import Mechanics.items.*;
 
 
@@ -23,6 +25,8 @@ public class Character {
     public double exp;
     public int health;
     
+    public Weapon equippedWeapon;
+    public Armor equippedArmor;
     public Inventory characterInventory = new Inventory();
 
     //for insufficient field filling
@@ -35,6 +39,33 @@ public class Character {
     public String expBar = "[";
     public double levelCompletion;
 
+    //combat modifier traits
+    public double addMod = 0;
+    public double subMod = 0;
+    public double mulMod = 0;
+    public double divMod = 0;
+
+    /**
+     * High specificty constructor.
+     * @param name
+     * @param level
+     * @param exp
+     * @param health
+     * @param inventory
+     * @param weapon
+     * @param armor
+     */
+    public Character(String name, int level, double exp, int health, Inventory inventory, 
+    Weapon weapon, Armor armor) {
+        characterName = name;
+        this.level = level;
+        this.exp = exp;
+        this.health = health;
+        this.equippedWeapon = weapon;
+        this.equippedArmor = armor;
+    }
+ 
+    
     /**
      * 
      * @param name
@@ -86,7 +117,8 @@ public class Character {
     }
 
     public Character() {
-        
+        this.exp = CHARACTER_DEFAULT_EXP;
+        this.health = CHARACTER_DEFAULT_HEALTH;
     }
 
     public Integer getDefaultHealth() {
@@ -142,6 +174,23 @@ public class Character {
         this.debugMode = debugMode;
     }
 
+    /**
+     * Set mod type as either 'add', 'sub', 'mul' , or 'div' for the modtype param.
+     * @param modtype
+     * @param setMod
+     */
+    public void setMods(String modtype, double setMod) {      
+        switch(modtype) {
+            case "add":
+            this.addMod = setMod;
+            case "sub":
+            this.subMod = setMod;
+            case "mul":
+            this.mulMod = setMod;
+            case "div":
+            this.divMod = setMod;
+        }
+    }
 
     /*
      * will create an experience bar system that will look something like this: XP
@@ -224,8 +273,8 @@ public class Character {
     public void displayCharacterStats() {
         //basic character stats
         System.out.println("Name: " + this.getName());
-        System.out.println("Level: " + level);
-        System.out.println("Exp: "  + exp);
+        System.out.println("Level: " + this.level);
+        System.out.println("Exp: "  + this.exp);
 
     }
 
@@ -244,7 +293,7 @@ public class Character {
      * createNewCharacter 
      * @param name
      * @see create toString() for character instead of void
-     * 
+     *  
      
     *
     public static void createNewCharacter(String name) {

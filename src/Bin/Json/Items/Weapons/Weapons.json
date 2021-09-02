@@ -15,6 +15,30 @@
         ]
 
     },
+    "Sword of Luca" : {
+        "Attacks" : [
+            {
+                "name" : "Luca's Windup",
+                "damage": 40,
+                "description" : "Using the energy that radiates off of Luca's old blade, you wind up to unleash a large amount of damage. Heavy Attack."
+            },
+            {
+                "name": "Divine Righteousness",
+                "damage" : 40,
+                "description" : "Unleash heavenly fury like Luca of the old age."
+            }
+        ], 
+        "description": "The sword held by Luca, the great high priest of the old ages."
+    },
+    "Beginners Dagger" : {
+        "Attacks": [
+            {
+                "name": "Light attack.",
+                "damage":10,
+                "description": "Just a flesh wound."
+            }
+        ]
+    },
     "Fire Scabbard" : {
 
     }

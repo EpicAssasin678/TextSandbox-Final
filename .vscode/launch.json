@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch CombatEvent",
+            "request": "launch",
+            "mainClass": "Mechanics.combat.CombatEvent",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
             "name": "Launch InventoryGUI",
             "request": "launch",
             "mainClass": "Mechanics.items.InventoryGUI",
