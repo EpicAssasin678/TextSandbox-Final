@@ -1,6 +1,6 @@
 package Mechanics.items;
 
-public class Armor {
+public class Armor extends Item{
     
     
 }

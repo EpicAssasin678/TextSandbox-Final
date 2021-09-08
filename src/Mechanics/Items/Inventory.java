@@ -1,23 +1,24 @@
 package Mechanics.items;
 
 import java.io.FileWriter;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.swing.text.Element;
+import javax.swing.text.html.ImageView;
 
 import org.json.simple.*;
-
-
 
 /**
  * Inventory represents a HashMap of Items 
  * Items is superclass for weapons, tools, etc
  * Inventory class is not an object but rather a set of methods
  */
-public class Inventory {
+public class Inventory  {
     
     //instance variables
-    public HashMap <String, Item> inventory = new HashMap<String, Item>();
+    //public HashMap <String, Item> inventory = new HashMap<String, Item>();
+    public ArrayList<Item> inventory = new ArrayList<Item>();
     int itemIndex = 0;
 
     //already methods within HashMap, but carrying over
@@ -31,7 +32,7 @@ public class Inventory {
     //TODO change HashMap to type <String, Item> instead
     
 
-    public Inventory () {
+    public Inventory  () {
         this.maxSize = 20;
     }
 
@@ -45,8 +46,67 @@ public class Inventory {
       */
     public void addToInventory(Weapon weapon) {
         
-        //System.out.println(weapon);
-        //System.out.println(weapon.getName());
+        System.out.println("Adding weapon to inventory.");
+        inventory.add(weapon);
+        size++;
+    }
+
+    public void addToInventory(Potion potion) {
+
+        System.out.println("Adding potion to inventory.");
+        inventory.add(potion);
+        size++;
+    }
+
+    public void addToInventory(Armor armor) {
+        System.out.println("Adding armor to inventory.");
+        inventory.add(armor);
+        size++;
+    }
+
+    public String toString() {
+        return this.inventory.toString();
+    }
+
+    public static void main(String[] args) {
+        
+    }
+}
+
+
+    /**
+     * Passes in pointer and creates new item obj from fields of item obj, points to a new one in memory
+     * 
+     *
+    //public HashMap <String, Item> inventory = new HashMap<String, Item>();
+    public ArrayList<Item> inv = new ArrayList<Item>();
+    int itemIndex = 0;
+
+    //already methods within HashMap, but carrying over
+    int size = 0;
+    int maxSize;
+    
+
+    //? inventory is just an instance variable of the class instead of any object 
+    //? do we even need an object form of the class and if so what can we make static????(ie)
+    //? if this was so, Item would need an implicit superconstructor
+    //TODO change HashMap to type <String, Item> instead
+    
+
+    public Inventory  () {
+        this.maxSize = 20;
+    }
+
+    public Inventory (int maxsize) {
+        this.maxSize = maxsize;        
+    }
+
+     /**
+      * Passes in pointer and creates new item obj from fields of weapon obj, points to a new one in memory
+      * @param weapon
+    public void addToInventory(Weapon weapon) {
+        
+
         weapon = new Weapon(weapon.getName());
         inventory.put(weapon.getName(), weapon);
         System.out.println("A weapon was added to the inventory: " + inventory.get(weapon.getName()) + " at " + itemIndex);
@@ -57,7 +117,8 @@ public class Inventory {
 
         //Implement the potion type 
         System.out.println(potion);
-        //potion = new Potion(potion.getName());
+        potion = new Potion(potion.healthGain);
+        inventory.put(potion.name, value);
         
     }
 
@@ -99,25 +160,8 @@ public class Inventory {
         System.out.println("AFTER: " + inv.inventory.get("Broadsword").getName());
 
         System.out.println(inv.inventory.get("Broadsword").specifyItemType());
-        
+
         
     }
 }
-
-
-    /**
-     * Passes in pointer and creates new item obj from fields of item obj, points to a new one in memory
-     * 
-     */
-
-    /*DEPRICATED
-    public void addToInventory (Item item) {
-        
-        //System.out.println(item);
-        //System.out.println(item.getName());
-        item = new Item(item.getName());
-        inventory.put(item.getName(), item);
-        System.out.println("An item was added to the inventory: " + inventory.get(item.getName()) + " at " + itemIndex);
- 
-    }
      */

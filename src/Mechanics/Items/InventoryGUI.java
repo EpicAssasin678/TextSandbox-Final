@@ -22,7 +22,7 @@ public class InventoryGUI {
         //String [] keyArr = (String[]) inv.inventory.keySet().toArray();
 
         for (int i = 0 ; i < inv.size; i++ ) {
-            keyLabels[i] = new JLabel( (String) inv.inventory.keySet().toArray()[i]);
+            //keyLabels[i] = new JLabel( (String) inv.inventory.keySet().toArray()[i]);
 
         }
         System.out.println(keyLabels);

@@ -24,6 +24,7 @@ public class Character {
     public int level;
     public double exp;
     public int health;
+    public int maxHealth; 
     
     public Weapon equippedWeapon;
     public Armor equippedArmor;
@@ -63,6 +64,8 @@ public class Character {
         this.health = health;
         this.equippedWeapon = weapon;
         this.equippedArmor = armor;
+
+        this.maxHealth = health;
     }
  
     
@@ -79,7 +82,7 @@ public class Character {
         this.level = level;
         this.exp = exp;
         this.health = health;
-        
+        this.maxHealth = health;
     }
  
     /**
@@ -90,6 +93,7 @@ public class Character {
         this.level = level;
         this.exp = exp;
         this.health = health;
+        this.maxHealth = health;
     }
     
 
@@ -100,6 +104,7 @@ public class Character {
 
         //setting defaults if not specified 
         this.health = CHARACTER_DEFAULT_HEALTH;
+        this.maxHealth = health;
     }
 
     public Character(String name, int level) {
@@ -109,16 +114,21 @@ public class Character {
         //setting defaults if not specified
         this.exp = CHARACTER_DEFAULT_EXP;
         this.health = CHARACTER_DEFAULT_HEALTH;
+        this.maxHealth = health;
     }
 
     //overloading Charcter object so that it has multiple forms 
     public Character(String name) {
         characterName = name;
+        this.exp = CHARACTER_DEFAULT_EXP;
+        this.health = CHARACTER_DEFAULT_HEALTH;
+        this.maxHealth = health;
     }
 
     public Character() {
         this.exp = CHARACTER_DEFAULT_EXP;
         this.health = CHARACTER_DEFAULT_HEALTH;
+        this.maxHealth = health;
     }
 
     public Integer getDefaultHealth() {
@@ -133,7 +143,7 @@ public class Character {
         return characterName;
     }
 
-    public void setName(final String newname) {
+    public void setName(String newname) {
         characterName = newname;
     }
 
@@ -258,16 +268,6 @@ public class Character {
         System.out.println("Level " + (1 + level) + " Completion: " + exp + "/" + expToNextLevel + "");
     }
 
-    //specific for character
-    /** REDUNDANT
-    public void displayCharacterStats(Character currentCharacter) {
-        //basic character stats
-        System.out.println("\nName: " + currentCharacter.getName());
-        System.out.println("Level: ");
-        System.out.println("Exp: ");
-
-    }
-    */
 
     //overloaded form
     public void displayCharacterStats() {

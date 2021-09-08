@@ -8,6 +8,7 @@ public enum ItemType {
     EQUIPPABLE,
     CONSUMABLE,
     POTION,
+    POTION_EFFECT,
     SPECIAL_ITEM,
 
 }

@@ -276,6 +276,7 @@ import java.util.ArrayList;
 # General Notes Moving Forward in v0.5
 >Skill Points will be acquired after a level up occurs. 
 
+>Have only one method of attacking players.
 # Combat System Rough Draft
 
 >Skills will affect the actual damage of the attack given out after all modifiers are present. 
