@@ -7,7 +7,7 @@ public class Enemy extends Character {
         super.characterName = name;
         super.level = level;
         super.health = health;
-
+        
     }
 
     public void enemMethod() {

@@ -16,7 +16,8 @@ import org.json.simple.parser.JSONParser;
  * @version 0.2
  */
 public class Weapon extends Item {
-    
+
+    ItemType itemType = ItemType.WEAPON;
     //obj instance variables
     String identifier;
     protected String name;

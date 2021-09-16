@@ -1,14 +1,53 @@
-## Getting Started
+# Item package readme
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This is the readme for the item package
 
-## Folder Structure
+## Documentation
 
-The workspace contains two folders by default, where:
+### Documentation on the item package
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
 
-## Dependency Management
+Idea for how to implement the inventory HashMap:
+https://stackoverflow.com/questions/14599317/hashmap-holding-different-data-types-as-values-for-instance-integer-string-and/14599451
 
-The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-pack/blob/master/release-notes/v0.9.0.md#work-with-jar-files-directly).
+____
+
+## Problems
+
+### Item Class
+Right now their is a couple of problems:
+
+1. Representing a Weapon object as an instance of the Item class does not allow for the use of some weapon methods. This is also inflexible with other types of items. 
+
+
+### Item Package 
+
+___
+## Abstract Functionality
+
+My idea for this package is to create a series of classes for the acess of items and storage in an inventory system.
+
+
+### Inventory Class
+Inventory class can be an objedct class although may have no need to in all actuality because multiple instances of the inventory class should not be needed. The only concievable instance would be that of the player.
+
+The 'Inventory' will contain a Hashmap that stores the Items with a relative index as an integer. So far their are two ways I can see of creating the inventory system:
+
+1. A 2D ArrayList containing an ArrayList in as each value
+Option #1 would allow me to reference by an Index already, but would be tricky as things can not be searched through in the same way. But a true index value may not be achievable.
+2. A Hashmap with ArrayLists to be the value and ints as keys to act as an index
+Option #2 would be more fond personally as items can be looked up accurately by their key rather than an index. The random lookup would be ignored. Only problem with this is the idea of having indexes are still unknown. This option would simulate an index bot not really create one, and the index may need to be tracked over other methods that modify position of items.
+
+
+
+### Item Class
+
+The item class will be instnatiated by item obj, item obj only needs 2 fields really which is the name and what it points to. All other variables can be instance variables.
+
+The same goes for it's children classes where all will be direct superconstructors.
+
+
+
+
+
+

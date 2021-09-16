@@ -23,7 +23,7 @@ public class Combat  {
         
     public static void attack(Character Target, int damage) {
         Target.setHealth(Target.getHealth() - damage);
-        System.out.println(Target.getName() + "was attacked" + damage + "HP");
+        System.out.println(Target.getName() + "was attacked and lost" + damage + "HP");
     }
     
     public void dealRandomDamage(Character Target) {

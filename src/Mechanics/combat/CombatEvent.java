@@ -31,10 +31,10 @@ public class CombatEvent {
 
     private void executeCombatTurn(Character player, Enemy opponent) {
         input = new Scanner(System.in);
-
-        System.out.println("Select an action:\n");
-        System.out.println("1) Attack with weapon.\n2) Use a item.\n3) Equip and item.\n4) View inventory.");
         
+        
+        System.out.println("Select an action:\n");
+        System.out.println("1) Attack with weapon.\n2) Use an item.\n3) Switch weapon.\n4) View inventory.");
         switch (input.nextInt()){
             case 1:
                 int choice;
@@ -44,12 +44,17 @@ public class CombatEvent {
                 Combat.attack( opponent, player.equippedWeapon.attackValues.get(input.nextInt() - 1) );
                 
             case 2:
-                
+            //
+
             case 3:
+            //
 
             case 4:
+            //
+            
         }
-        makeEnemyChoice(player, opponent);  
+        makeEnemyChoice(player, opponent);
+
 
         if (player.getHealth() <= 0) {
             System.out.println("You died.");
@@ -57,7 +62,9 @@ public class CombatEvent {
             //need to implement level up screen afterwards
             System.out.println("You have won!");
         } 
-  
+        if (player.getHealth() > 0 && opponent.getHealth() > 0) {
+            executeCombatTurn(player, opponent);
+        }
     }
 
     //Eventually, this will be a process that the AI will choose, but for now it will be a simple fixed amount of damage.
@@ -84,3 +91,5 @@ public class CombatEvent {
  * Turn timer increases
  * Loop repeats 
  */
+
+ //TODO Make an attack class for certain effect modifiers and then a parser for those effect codes.

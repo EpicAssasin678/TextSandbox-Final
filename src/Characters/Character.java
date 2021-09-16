@@ -151,8 +151,8 @@ public class Character {
         return level;
     }
 
-    public void setLevel(final int newLevel) {
-        level = newLevel;
+    public void setLevel(int newLevel) {
+        this.level = newLevel;
     }
 
     // xp will fill up every time and once it equals the next level, it will add
@@ -160,8 +160,8 @@ public class Character {
         return exp;
     }
 
-    public void setExp(final double newExp) {
-        exp = newExp;
+    public void setExp(double newExp) {
+        this.exp = newExp;
     }
 
     public double getExpToNextLevel() {
@@ -289,20 +289,7 @@ public class Character {
         
     }
 
-    /**
-     * createNewCharacter 
-     * @param name
-     * @see create toString() for character instead of void
-     *  
-     
-    *
-    public static void createNewCharacter(String name) {
-        System.out.println("\nCharacter Creation: ");
-        Character PLAYER = new Character(name, 1, CHARACTER_DEFAULT_EXP, CHARACTER_DEFAULT_HEALTH);
-        PLAYER.displayCharacterStats();
 
-    }
-    */
     
     public static void main(String[] args) {
         

@@ -4,6 +4,8 @@ import Characters.Character;
 
 public class Potion extends Item {
     
+    ItemType itemType = ItemType.POTION;
+    
     String description;
     String name = "default";
 

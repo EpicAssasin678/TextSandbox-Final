@@ -17,6 +17,8 @@ import org.json.simple.parser.*;
  */
 
 public class Item implements ItemInterface {
+
+    ItemType itemType = ItemType.SPECIAL_ITEM;
     
     //instance varaibles
     public String identifier;
@@ -76,7 +78,7 @@ public class Item implements ItemInterface {
 
     //because of the extension of ItemInterface
     public ItemType specifyItemType() {
-        return ItemType.UNDEFINED;
+        return this.itemType;
     }
 
     public String checkClass() {

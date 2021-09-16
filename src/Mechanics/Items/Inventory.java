@@ -29,7 +29,7 @@ public class Inventory  {
     //? inventory is just an instance variable of the class instead of any object 
     //? do we even need an object form of the class and if so what can we make static????(ie)
     //? if this was so, Item would need an implicit superconstructor
-    //TODO change HashMap to type <String, Item> instead
+    //TODO create a text menu for viewing items
     
 
     public Inventory  () {
@@ -68,7 +68,31 @@ public class Inventory  {
         return this.inventory.toString();
     }
 
+    public void displayInventoryMenu() {
+        System.out.println("PRINTING INVENTORY MENU: ");
+        int[] sortedIndexes = new int[this.size];
+
+        //Make an array of indexes that correspond to the order displayed and an array of displayed to filter the entries.
+        for (int i = 0; i < inventory.size(); i++) {
+            System.out.println("[" + i + "]" + inventory.get(i).getName());
+            switch (inventory.get(i).itemType) {
+                case SPECIAL_ITEM:
+                    sortedIndexes[i] = inventory.indexOf(inventory.get(i));
+                case WEAPON:
+                    sortedIndexes[i] = inventory.indexOf(inventory.get(i));
+                case ARMOR:
+                    sortedIndexes[i] = inventory.indexOf(inventory.get(i));
+                case POTION:
+
+            }
+
+            
+        }
+
+    }
+
     public static void main(String[] args) {
+        
         
     }
 }
