@@ -30,6 +30,12 @@ public class Character {
     public Armor equippedArmor;
     public Inventory characterInventory = new Inventory();
 
+    //for inventory viewing system, passing values to these instance variables 
+    public Weapon viewedWeapon;
+    public Armor viewedArmor;
+    public Potion viewedPotion;
+    public Item viewedItem;
+
     //for insufficient field filling
     public static int CHARACTER_DEFAULT_HEALTH = 100;
     public static int CHARACTER_DEFAULT_EXP = 0;
@@ -56,8 +62,7 @@ public class Character {
      * @param weapon
      * @param armor
      */
-    public Character(String name, int level, double exp, int health, Inventory inventory, 
-    Weapon weapon, Armor armor) {
+    public Character(String name, int level, double exp, int health, Weapon weapon, Armor armor) {
         characterName = name;
         this.level = level;
         this.exp = exp;
@@ -69,21 +74,7 @@ public class Character {
     }
  
     
-    /**
-     * 
-     * @param name
-     * @param level
-     * @param exp
-     * @param health
-     * @param inventory
-     */
-    public Character(String name, int level, double exp, int health, Inventory inventory) {
-        characterName = name;
-        this.level = level;
-        this.exp = exp;
-        this.health = health;
-        this.maxHealth = health;
-    }
+
  
     /**
      * Constructor for objects of class Character

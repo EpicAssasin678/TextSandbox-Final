@@ -149,6 +149,8 @@ public class Weapon extends Item {
         System.out.println("\n");
     }
 
+    
+
 //Weapon print options
 
 

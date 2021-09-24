@@ -18,7 +18,7 @@ import org.json.simple.parser.*;
 
 public class Item implements ItemInterface {
 
-    ItemType itemType = ItemType.SPECIAL_ITEM;
+    ItemType itemType;
     
     //instance varaibles
     public String identifier;
@@ -72,8 +72,8 @@ public class Item implements ItemInterface {
         return this.type;
     }
 
-    public void setType(String set) {
-        this.type = set;
+    public void setType(ItemType set) {
+        this.itemType = set;
     }
 
     //because of the extension of ItemInterface

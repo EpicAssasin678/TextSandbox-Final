@@ -3,27 +3,38 @@ package Mechanics.items;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.TreeMap;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.swing.text.Element;
 import javax.swing.text.html.ImageView;
 
 import org.json.simple.*;
 
+import Characters.Character;
+
 /**
  * Inventory represents a HashMap of Items 
- * Items is superclass for weapons, tools, etc
- * Inventory class is not an object but rather a set of methods
+ * Items is parent class for all other items
+ * Inventory class is a collection made to keep track of size and items
  */
 public class Inventory  {
-    
-    //instance variables
-    //public HashMap <String, Item> inventory = new HashMap<String, Item>();
-    public ArrayList<Item> inventory = new ArrayList<Item>();
     int itemIndex = 0;
 
     //already methods within HashMap, but carrying over
     int size = 0;
     int maxSize;
+    
+    //instance variables
+    //public HashMap <String, Item> inventory = new HashMap<String, Item>();
+    private ArrayList<Item> itemInv = new ArrayList<Item>();
+    private ArrayList<Weapon> weaponInv = new ArrayList<Weapon>();
+    private ArrayList<Armor> armorInv = new ArrayList<Armor>();
+    private ArrayList<Potion> potionInv = new ArrayList<Potion>();
+    ItemType[] typeMap = new ItemType[maxSize];
+    
     
 
     //? inventory is just an instance variable of the class instead of any object 
@@ -40,152 +51,95 @@ public class Inventory  {
         this.maxSize = maxsize;        
     }
 
+    //resizes both the size and typeMap array
+    public void setSize(int size) {
+        
+        this.typeMap = new ItemType[size];
+        this.maxSize = size;
+    }
+
      /**
       * Passes in pointer and creates new item obj from fields of weapon obj, points to a new one in memory
       * @param weapon
       */
     public void addToInventory(Weapon weapon) {
-        
+        if(this.size != maxSize) {
         System.out.println("Adding weapon to inventory.");
-        inventory.add(weapon);
+        weaponInv.add(weapon);
         size++;
+        }
     }
 
     public void addToInventory(Potion potion) {
-
+        if(this.size != maxSize) {
         System.out.println("Adding potion to inventory.");
-        inventory.add(potion);
+        potionInv.add(potion);
         size++;
+        }
     }
 
     public void addToInventory(Armor armor) {
+        if(this.size != maxSize) {
         System.out.println("Adding armor to inventory.");
-        inventory.add(armor);
+        armorInv.add(armor); 
         size++;
+        }
+    }
+
+    //TODO make a method of retrieving items that doesn't alter type
+    //if I was in Python this wouldn't be an issue
+        
+    public Item get(int pos) {
+        if(pos  <= weaponInv.size()) {
+            return weaponInv.get(pos);
+        }
+        if(pos  <= weaponInv.size() + armorInv.size()) {
+            return armorInv.get(pos);
+        } 
+        if (pos  <= weaponInv.size() + armorInv.size() + potionInv.size()) {
+            return potionInv.get(pos);
+        }else {
+            return itemInv.get(pos);
+        }
     }
 
     public String toString() {
-        return this.inventory.toString();
+        return this.toString();
     }
+
 
     public void displayInventoryMenu() {
         System.out.println("PRINTING INVENTORY MENU: ");
-        int[] sortedIndexes = new int[this.size];
-
-        //Make an array of indexes that correspond to the order displayed and an array of displayed to filter the entries.
-        for (int i = 0; i < inventory.size(); i++) {
-            System.out.println("[" + i + "]" + inventory.get(i).getName());
-            switch (inventory.get(i).itemType) {
-                case SPECIAL_ITEM:
-                    sortedIndexes[i] = inventory.indexOf(inventory.get(i));
-                case WEAPON:
-                    sortedIndexes[i] = inventory.indexOf(inventory.get(i));
-                case ARMOR:
-                    sortedIndexes[i] = inventory.indexOf(inventory.get(i));
-                case POTION:
-
-            }
-
-            
+        int cout = 1;
+        for(Weapon weapon: this.weaponInv) {
+            System.out.println("[" + cout + "] " + weapon.getName());
+            cout++;
         }
-
+        for(Armor armor: this.armorInv) {
+            System.out.println("[" + cout + "] " + armor.getName());
+            cout++;
+        }
+        for(Potion potion: this.potionInv) {
+            System.out.println("[" + cout + "] " + potion.getName());
+            cout++;
+        }
+        for(Item keyItem: this.itemInv) {
+            System.out.println("[" + cout + "] " + keyItem.getName());
+            cout++;
+        }
     }
 
     public static void main(String[] args) {
         
+        Character PLAYER = new Character("Gladius", 1, 0, 100, new Weapon("Beginners Dagger"), new Armor());
+        PLAYER.characterInventory.addToInventory(new Weapon("Begginners Dagger"));
+        PLAYER.characterInventory.addToInventory(new Potion("Healing Potion", 20));
+        PLAYER.characterInventory.addToInventory(new Potion("Healing Potion", 20));
+      
+        PLAYER.characterInventory.displayInventoryMenu();
         
     }
 }
 
 
-    /**
-     * Passes in pointer and creates new item obj from fields of item obj, points to a new one in memory
-     * 
-     *
-    //public HashMap <String, Item> inventory = new HashMap<String, Item>();
-    public ArrayList<Item> inv = new ArrayList<Item>();
-    int itemIndex = 0;
-
-    //already methods within HashMap, but carrying over
-    int size = 0;
-    int maxSize;
     
-
-    //? inventory is just an instance variable of the class instead of any object 
-    //? do we even need an object form of the class and if so what can we make static????(ie)
-    //? if this was so, Item would need an implicit superconstructor
-    //TODO change HashMap to type <String, Item> instead
-    
-
-    public Inventory  () {
-        this.maxSize = 20;
-    }
-
-    public Inventory (int maxsize) {
-        this.maxSize = maxsize;        
-    }
-
-     /**
-      * Passes in pointer and creates new item obj from fields of weapon obj, points to a new one in memory
-      * @param weapon
-    public void addToInventory(Weapon weapon) {
-        
-
-        weapon = new Weapon(weapon.getName());
-        inventory.put(weapon.getName(), weapon);
-        System.out.println("A weapon was added to the inventory: " + inventory.get(weapon.getName()) + " at " + itemIndex);
-
-    }
-
-    public void addToInventory(Potion potion) {
-
-        //Implement the potion type 
-        System.out.println(potion);
-        potion = new Potion(potion.healthGain);
-        inventory.put(potion.name, value);
-        
-    }
-
-    //acessor to privatize 
-    public HashMap <String, Item> getMap () {
-        return this.inventory;
-    }
-
-    public String[] getKeySet() {
-        //returns an array of the keys
-        return (String[]) this.inventory.keySet().toArray();
-    }
-
-
-    public String toString() {
-        return this.inventory.toString();
-    }
-
-    public static void main(String[] args) {
-        
-        //instantiating INventory inv and Item test
-    
-        Inventory inv = new Inventory();
-        Weapon testWeapon = new Weapon("Broadsword");
-
-        System.out.println("\nTEST TO SHOW MEMORY ID\ninstantiated Inventory inv and Weapon testWeapon");
-        System.out.println(testWeapon);
-
-        System.out.println("\nThen testing traditional put method of testWeapon");
-        inv.inventory.put(testWeapon.getName(), testWeapon);
-        
-        System.out.println("Inventory now is: " + inv + "\nNow time to do the add method:");
-        inv.addToInventory(testWeapon);
-        System.out.println("Test weapon now should be changed.\nInventory now" + inv);
-        
-        System.out.println("\nNow changing name of that inventory assignment");
-        System.out.println("BEFORE: " + inv.inventory.get("Broadsword").getName());
-        inv.inventory.get("Broadsword").setName("Newname");
-        System.out.println("AFTER: " + inv.inventory.get("Broadsword").getName());
-
-        System.out.println(inv.inventory.get("Broadsword").specifyItemType());
-
-        
-    }
-}
-     */

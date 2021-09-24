@@ -74,7 +74,7 @@ public class CombatEvent {
     }
 
     public static void main(String[] args) {
-        CombatEvent testEvent = new CombatEvent(new Character("PLAYER", 1, 0, 100, new Inventory(), new Weapon("Beginners Dagger"), new Armor()), 
+        CombatEvent testEvent = new CombatEvent(new Character("PLAYER", 1, 0, 100, new Weapon("Beginners Dagger"), new Armor()), 
         new Enemy("newEnemy", 1, 100));
 
     }

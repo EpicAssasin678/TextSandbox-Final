@@ -309,7 +309,7 @@ BREAKPOINTS
 
 In this example, the modifier will be m = (1/2) * w :
 
-a =m
+a = m
 
 a = w + ((1/2) * w)
 

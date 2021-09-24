@@ -11,8 +11,10 @@
                 "damage" : 20,
                 "description" : "A hard swing with all your might. 10 Additional hard attack."
             }
+            
            
-        ]
+        ],
+        "description" : "null"
 
     },
     "Sword of Luca" : {
