@@ -44,13 +44,28 @@ public class CombatEvent {
                 Combat.attack( opponent, player.equippedWeapon.attackValues.get(input.nextInt() - 1) );
                 
             case 2:
-            //
+            //Weapon switching
+                //display weapons 
+
+                //check input
+
+                //display inventory.get(i-1) weapon's stats if viewed
+                //if not then equip
+                //if niether then recurse 
 
             case 3:
             //
 
             case 4:
-            //
+            //Inventory inspection
+                
+                //while player didn't exit menu
+                while (input.hasNext()) {
+                    System.out.println("");
+                    player.characterInventory.displayInventoryMenu();
+                }
+                //if player exited menu, recurse back to executeCombatTurn
+                
             
         }
         makeEnemyChoice(player, opponent);

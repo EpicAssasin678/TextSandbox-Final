@@ -66,6 +66,7 @@ public class Inventory  {
         if(this.size != maxSize) {
         System.out.println("Adding weapon to inventory.");
         weaponInv.add(weapon);
+        //updateTypeMap();
         size++;
         }
     }
@@ -74,6 +75,7 @@ public class Inventory  {
         if(this.size != maxSize) {
         System.out.println("Adding potion to inventory.");
         potionInv.add(potion);
+        //updateTypeMap();
         size++;
         }
     }
@@ -82,8 +84,27 @@ public class Inventory  {
         if(this.size != maxSize) {
         System.out.println("Adding armor to inventory.");
         armorInv.add(armor); 
+        //updateTypeMap();
         size++;
         }
+    }
+
+    public String getWeaponList() {
+        int cout = 1;
+        String temp = String.format("%30s", "Weapons\n") + "|   Slot   |        Item Name      |   Type   |";
+        for(Weapon weapon: this.weaponInv) {
+            temp += "\n" + String.format("%8s", "[" + cout + "] ") + String.format("%25s", "\"" + weapon.getName() + "\"" + String.format("%11s","WEAPON"));
+            cout++;
+        }
+        return temp;
+    }
+
+    public void updateTypeMap() {
+        int cout = 0;
+        for(Weapon weapon: weaponInv) {typeMap[cout] = ItemType.WEAPON; cout++;}
+        for(Armor armor: armorInv) {typeMap[cout] = ItemType.ARMOR; cout++;}
+        for(Potion potion: potionInv) {typeMap[cout] = ItemType.POTION; cout++;}
+
     }
 
     //TODO make a method of retrieving items that doesn't alter type
@@ -111,20 +132,21 @@ public class Inventory  {
     public void displayInventoryMenu() {
         System.out.println("PRINTING INVENTORY MENU: ");
         int cout = 1;
+        System.out.println(String.format("%30s", "Inventory Menu\n") + "|   Slot   |        Item Name      |   Type   |");
         for(Weapon weapon: this.weaponInv) {
-            System.out.println("[" + cout + "] " + weapon.getName());
+            System.out.println(String.format("%8s", "[" + cout + "] ") + String.format("%25s", "\"" + weapon.getName() + "\"") + String.format("%11s","WEAPON"));
             cout++;
         }
         for(Armor armor: this.armorInv) {
-            System.out.println("[" + cout + "] " + armor.getName());
+            System.out.println(String.format("%8s", "[" + cout + "] ") + String.format("%25s", "\"" + armor.getName() + "\"")  + String.format("%11s","ARMOR"));
             cout++;
-        }
+        }   
         for(Potion potion: this.potionInv) {
-            System.out.println("[" + cout + "] " + potion.getName());
+            System.out.println(String.format("%8s", "[" + cout + "] ") +  String.format("%25s", "\"" + potion.getName() + "\"")  + String.format("%11s","POTION"));
             cout++;
         }
         for(Item keyItem: this.itemInv) {
-            System.out.println("[" + cout + "] " + keyItem.getName());
+            System.out.println(String.format("%8s", "[" + cout + "] ") + String.format("%25s", "\"" + keyItem.getName() + "\"")  + String.format("%11s","ITEM"));
             cout++;
         }
     }

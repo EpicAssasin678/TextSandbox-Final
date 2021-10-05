@@ -151,7 +151,7 @@ public class Weapon extends Item {
 
     
 
-//Weapon print options
+    //Weapon print options
 
 
     /**
@@ -187,6 +187,8 @@ public class Weapon extends Item {
         build += "-------------------------------------------------------------\n";
         return build;
     }
+
+    
 
     public static void main(String[] args) {
 
