@@ -1,0 +1,9 @@
+{
+    "Basic Armor": {
+        "hardness" : 0.15,
+        "softness" : 0.10,
+        "modifications" : [0,0,0,0,0],
+        "description": null
+    }
+
+}

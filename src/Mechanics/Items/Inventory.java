@@ -29,10 +29,10 @@ public class Inventory  {
     
     //instance variables
     //public HashMap <String, Item> inventory = new HashMap<String, Item>();
-    private ArrayList<Item> itemInv = new ArrayList<Item>();
-    private ArrayList<Weapon> weaponInv = new ArrayList<Weapon>();
-    private ArrayList<Armor> armorInv = new ArrayList<Armor>();
-    private ArrayList<Potion> potionInv = new ArrayList<Potion>();
+    public ArrayList<Item> itemInv = new ArrayList<Item>();
+    public ArrayList<Weapon> weaponInv = new ArrayList<Weapon>();
+    public ArrayList<Armor> armorInv = new ArrayList<Armor>();
+    public ArrayList<Potion> potionInv = new ArrayList<Potion>();
     ItemType[] typeMap = new ItemType[maxSize];
     
     
@@ -89,6 +89,7 @@ public class Inventory  {
         }
     }
 
+
     public String getWeaponList() {
         int cout = 1;
         String temp = String.format("%30s", "Weapons\n") + "|   Slot   |        Item Name      |   Type   |";
@@ -124,6 +125,16 @@ public class Inventory  {
         }
     }
 
+    /**
+     * Used for determining which functions to call upon in menus and other game mechanics. Updates typeMap before returning.
+     * @param pos
+     * @return ItemType of Item in inventory at position pos
+     */
+    public ItemType getFromTypeMap (int pos) {
+        this.updateTypeMap(); 
+        return typeMap[pos];
+    }
+
     public String toString() {
         return this.toString();
     }
@@ -150,6 +161,12 @@ public class Inventory  {
             cout++;
         }
     }
+
+    static String getViewString(Weapon weapon) {
+        return weapon.getName() + "\nAttacks:" + weapon.printAttackMap() + "Description: " + weapon.getDescription();
+    }
+
+    
 
     public static void main(String[] args) {
         

@@ -10,5 +10,6 @@ public class CombatTest {
         Character PLAYER = new Character("Test", 1);
         Enemy newEnemy = new Enemy("Gako", 1, 100);
         PLAYER.characterInventory.addToInventory(new Weapon("Broadsword"));
+        
     }
 }

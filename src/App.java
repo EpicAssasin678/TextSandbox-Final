@@ -9,7 +9,16 @@ import Bin.*;
 
 
 public class App {
+    
+    
 
+    //NEEDS FIX
+    //make it static but return type character 
+    public static void createNewCharacter(String name) {
+        System.out.println("\nCharacter Creation: ");
+        PLAYER = new Character(name, 1, Character.CHARACTER_DEFAULT_EXP, Character.CHARACTER_DEFAULT_HEALTH);
+        PLAYER.displayCharacterStats();
+    }
  
     
     //  GLOBAL PLAYER CHARACTER
@@ -33,7 +42,7 @@ public class App {
         //!THIS WORKS BUT NO COLOR
         Runtime runtime = Runtime.getRuntime();
         try {
-            Process p1 = runtime.exec("C:\\Users\\epicd\\OneDrive\\Documents\\Java Projects\\TextSandbox\\src\\coloroutput");
+            Process p1 = runtime.exec("C:\\Users\\epicd\\OneDrive\\Documents\\Java Projects\\TextSandbox\\src\\coloroutput -s \"Hello\" -f 10 -b 2");
             InputStream is = p1.getInputStream();
             int i = 0;
             while( (i = is.read() ) != -1) {
@@ -48,13 +57,6 @@ public class App {
     }
 
 
-    //NEEDS FIX
-    //make it static but return type character 
-    public static void createNewCharacter(String name) {
-        System.out.println("\nCharacter Creation: ");
-        PLAYER = new Character(name, 1, Character.CHARACTER_DEFAULT_EXP, Character.CHARACTER_DEFAULT_HEALTH);
-        PLAYER.displayCharacterStats();
-    }
 
     
     
