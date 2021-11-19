@@ -1,4 +1,4 @@
-package Bin;
+package Mechanics;
 
 import java.io.FileReader;
 
@@ -351,6 +351,7 @@ public class Dialogue {
         Dialogue rightNow = new Dialogue();
         //rightNow.initDialogue("dialogueEvent01");
         rightNow.initConversation("dialogueEvent01");
+        
         
     }
 

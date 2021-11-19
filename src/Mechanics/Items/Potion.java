@@ -16,15 +16,19 @@ public class Potion extends Item {
     
     
     public Potion (String name, int healthGain) {
+        this.name = name;
         this.healthGain = healthGain;
+    }
+
+    public Potion (PotionType type) {
         
     }
 
-    public Potion (PotionType type, int healthGain) {
-
+    public PotionType getPotionType() {
+        return this.potionType;
     }
     
-    public void usePotion (Character PLAYER) {
+    public void use (Character PLAYER) {
         //adds healthGain to player
         PLAYER.health = (PLAYER.health + healthGain)-(PLAYER.health + healthGain)%PLAYER.maxHealth; 
     }

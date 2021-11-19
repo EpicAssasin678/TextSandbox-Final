@@ -9,7 +9,7 @@ public class Enemy extends Character {
         super.health = health;
         
     }
-
+    
     public void enemMethod() {
 
     }

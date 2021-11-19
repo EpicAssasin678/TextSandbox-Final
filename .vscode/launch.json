@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Armor",
+            "request": "launch",
+            "mainClass": "Mechanics.items.Armor",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
+            "name": "Launch Character",
+            "request": "launch",
+            "mainClass": "Characters.Character",
+            "projectName": "TextSandbox_c4aab7d0"
+        },
+        {
+            "type": "java",
             "name": "Launch CombatEvent",
             "request": "launch",
             "mainClass": "Mechanics.combat.CombatEvent",

@@ -17,10 +17,7 @@ public class Combat  {
      * make the attack set the health minus whatever damage
      * default attack method
      * @param Character target
-     * 
-     * 
-     */
-        
+     */ 
     public static void attack(Character Target, int damage) {
         Target.setHealth(Target.getHealth() - damage);
         System.out.println(Target.getName() + "was attacked and lost" + damage + "HP");
@@ -53,10 +50,7 @@ public class Combat  {
         return T;
     }
 
-    
 
-    
-    
     public static void main(String[] args) {
         
     }

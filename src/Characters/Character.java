@@ -2,6 +2,9 @@
 package Characters;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 import Mechanics.items.*;
 
@@ -52,8 +55,9 @@ public class Character {
     public double mulMod = 0;
     public double divMod = 0;
 
+
     /**
-     * High specificty constructor.
+     * High specificty constructor. Used only in test drivers currently.
      * @param name
      * @param level
      * @param exp
@@ -73,9 +77,6 @@ public class Character {
         this.maxHealth = health;
     }
  
-    
-
- 
     /**
      * Constructor for objects of class Character
      */
@@ -92,7 +93,7 @@ public class Character {
         characterName = name;
         this.level = level;
         this.exp = exp;
-
+        
         //setting defaults if not specified 
         this.health = CHARACTER_DEFAULT_HEALTH;
         this.maxHealth = health;
@@ -101,7 +102,6 @@ public class Character {
     public Character(String name, int level) {
         characterName = name;
         this.level = level;
-
         //setting defaults if not specified
         this.exp = CHARACTER_DEFAULT_EXP;
         this.health = CHARACTER_DEFAULT_HEALTH;
@@ -175,6 +175,24 @@ public class Character {
         this.debugMode = debugMode;
     }
 
+    public ArrayList<Weapon> getWeaponInv() {
+        return this.characterInventory.weaponInv;
+    }
+
+    public ArrayList<Armor> getArmorInv() {
+        return this.characterInventory.armorInv;
+    }
+
+    public ArrayList<Potion> getPotionInv() {
+        return this.characterInventory.potionInv;
+    }
+
+    public ArrayList<Item> getSpecialInv() {
+        return this.characterInventory.itemInv;
+    }
+
+
+
     /**
      * Set mod type as either 'add', 'sub', 'mul' , or 'div' for the modtype param.
      * @param modtype
@@ -191,7 +209,10 @@ public class Character {
             case "div":
             this.divMod = setMod;
         }
+
+
     }
+
 
     /*
      * will create an experience bar system that will look something like this: XP
@@ -202,29 +223,17 @@ public class Character {
     */
     public void generateExpBar() {
         //count through the levelCompletion
-        //int barFill = 0;
-        
         //make a rewrite so it is by instance
         this.expBar = "[";
 
         levelCompletion = exp / expToNextLevel;
-        //System.out.println("levelCompletion: " + levelCompletion);
-
         int barFill = (int)(levelCompletion / .10);
-        //System.out.println("barFill = " + barFill);
-        
         for (int i = 0; i < barFill; i++) {
             this.expBar += "*";
-            //System.out.println("Added a star to xp bar");
-            //System.out.println("integer count: " + i);
-            //System.out.println("Exp Bar:" + this.expBar);
         }
-
         for (int i = 0; i <= (10 - this.expBar.length()); i++) {
             if (10 - this.expBar.length() != 0) {
                 this.expBar += " ";
-                //System.out.println("integer i" + i);
-                //System.out.println("added space");
             }
         }
         this.expBar += "]";
@@ -259,7 +268,6 @@ public class Character {
         System.out.println("Level " + (1 + level) + " Completion: " + exp + "/" + expToNextLevel + "");
     }
 
-
     //overloaded form
     public void displayCharacterStats() {
         //basic character stats
@@ -274,11 +282,6 @@ public class Character {
         return "\nName: " + this.getName() + "\nLevel: " + level + "\nExp: " + exp + "\nHealth: " + health;
     }
     
-
-   
-    public static void init() {
-        
-    }
 
 
     
